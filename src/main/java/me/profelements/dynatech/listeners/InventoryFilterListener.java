@@ -50,8 +50,8 @@ public class InventoryFilterListener implements Listener {
         }
     }
 
-    private void filterItems(@Nonnull Player p, @Nonnull ItemStack inventoryFilter) {
-        PlayerProfile.getBackpack(inventoryFilter, backpack -> {
+    private void filterItems(@Nonnull Player p, @Nonnull ItemStack item) {
+        PlayerProfile.getBackpack(item, backpack -> {
             DynaTech.runSync(() -> filterInventory(p, backpack));
         });
     }
@@ -60,10 +60,6 @@ public class InventoryFilterListener implements Listener {
         for (ItemStack item : backpack.getInventory().getContents()) {
             if (item != null && item.getType() != Material.AIR) {
                 blacklistedMaterials.add(item.getType());
-            }
-
-            if (backpack.getInventory().isEmpty()) {
-                blacklistedMaterials.clear();
             }
         }
 

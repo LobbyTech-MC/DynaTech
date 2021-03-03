@@ -1,4 +1,4 @@
-package me.profelements.dynatech.items.electric.abstracts;
+package me.profelements.dynatech.items.machines;
 
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemState;
@@ -9,6 +9,7 @@ import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import io.github.thebusybiscuit.slimefun4.utils.itemstack.ItemStackWrapper;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
+import me.mrCookieSlime.CSCoreLibPlugin.cscorelib2.item.CustomItem;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
@@ -22,7 +23,6 @@ import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.mrCookieSlime.Slimefun.api.inventory.DirtyChestMenu;
 import me.mrCookieSlime.Slimefun.api.item_transport.ItemTransportFlow;
-import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import me.mrCookieSlime.Slimefun.cscorelib2.protection.ProtectableAction;
 import org.apache.commons.lang.Validate;
 import org.bukkit.Material;
@@ -108,16 +108,12 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
 
             processing.remove(b);
             progress.remove(b);
-            blockExtras(b);
             return true;
 
         });
 
         registerDefaultRecipes();
     }
-
-    public void blockExtras(Block b) {
-    };
 
     public void newMachineInstance(BlockMenu menu, Block b) {
     };
@@ -128,7 +124,7 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
         this.recipeOutput = recipeOutput;
     }
 
-    public void constructMenu(BlockMenuPreset preset) {
+    protected void constructMenu(BlockMenuPreset preset) {
         for (int i : getBorders().get(0)) {
             preset.addItem(i, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
         }
@@ -205,9 +201,6 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
     }
 
     protected void tick(Block b) {
-        if (getCharge(b.getLocation()) < getEnergyConsumption()) {
-            return;
-        }
         BlockMenu inv = BlockStorage.getInventory(b);
 
         if (isProcessing(b)) {
@@ -276,10 +269,9 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
                         return null;
                     }
                 }
-                if (isInputConsumed()) {
-                    for (Map.Entry<Integer, Integer> entry : found.entrySet()) {
-                        inv.consumeItem(entry.getKey(), entry.getValue());
-                    }
+
+                for (Map.Entry<Integer, Integer> entry : found.entrySet()) {
+                    inv.consumeItem(entry.getKey(), entry.getValue());
                 }
 
                 return recipe;
@@ -290,9 +282,6 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
         return null;
     }
 
-    public boolean isInputConsumed() {
-        return true;
-    }
 
     //Recipe Related Shenanigans
     protected void registerDefaultRecipes() {}
