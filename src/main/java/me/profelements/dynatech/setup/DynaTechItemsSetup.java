@@ -13,7 +13,6 @@ import me.profelements.dynatech.items.electric.AntigravityBubble;
 import me.profelements.dynatech.items.electric.AutoKitchen;
 import me.profelements.dynatech.items.electric.BandaidManager;
 import me.profelements.dynatech.items.electric.BarbedWire;
-import me.profelements.dynatech.items.electric.GrowthChamber;
 import me.profelements.dynatech.items.electric.MaterialHive;
 import me.profelements.dynatech.items.electric.PotionSprinkler;
 import me.profelements.dynatech.items.electric.SeedPlucker;
@@ -24,6 +23,14 @@ import me.profelements.dynatech.items.electric.generators.CulinaryGenerator;
 import me.profelements.dynatech.items.electric.generators.DragonEggGenerator;
 import me.profelements.dynatech.items.electric.generators.HydroGenerator;
 import me.profelements.dynatech.items.electric.generators.StardustReactor;
+import me.profelements.dynatech.items.electric.growthchambers.GrowthChamber;
+import me.profelements.dynatech.items.electric.growthchambers.GrowthChamberEnd;
+import me.profelements.dynatech.items.electric.growthchambers.GrowthChamberEndMK2;
+import me.profelements.dynatech.items.electric.growthchambers.GrowthChamberMK2;
+import me.profelements.dynatech.items.electric.growthchambers.GrowthChamberNether;
+import me.profelements.dynatech.items.electric.growthchambers.GrowthChamberNetherMK2;
+import me.profelements.dynatech.items.electric.growthchambers.GrowthChamberOcean;
+import me.profelements.dynatech.items.electric.growthchambers.GrowthChamberOceanMK2;
 import me.profelements.dynatech.items.misc.Bee;
 import me.profelements.dynatech.items.misc.ItemBand;
 import me.profelements.dynatech.items.misc.StarDustMeteor;
@@ -182,6 +189,14 @@ public class DynaTechItemsSetup {
                 }, new PotionEffect[] {new PotionEffect(PotionEffectType.HEALTH_BOOST, 20*15, 1, true) }
         ).register(plugin);
 
+        new ItemBand(DynaTechItems.DynaTechGeneral, DynaTechItems.ITEM_BAND_HASTE, RecipeType.MAGIC_WORKBENCH,
+                new ItemStack[] {
+                    SlimefunItems.COBALT_PICKAXE, new ItemStack(Material.NETHER_STAR), SlimefunItems.COBALT_PICKAXE,
+                    new ItemStack(Material.NETHER_STAR), DynaTechItems.VEX_GEM, new ItemStack(Material.NETHER_STAR),
+                    SlimefunItems.COBALT_PICKAXE, new ItemStack(Material.NETHER_STAR), SlimefunItems.COBALT_PICKAXE
+                }, new PotionEffect[] {new PotionEffect(PotionEffectType.FAST_DIGGING, 20*15, 1, true) }    
+        ).register(plugin);
+
         //Machines
         if (DynaTech.isExoticGardenInstalled()) {
                 new AutoKitchen(DynaTechItems.DynaTechGeneral, DynaTechItems.AUTO_KITCHEN, RecipeType.ENHANCED_CRAFTING_TABLE,
@@ -197,7 +212,6 @@ public class DynaTechItemsSetup {
                         .register(plugin);
         }
        
-
         new GrowthChamber(DynaTechItems.DynaTechGeneral, DynaTechItems.GROWTH_CHAMBER, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
                         SlimefunItems.HARDENED_GLASS,SlimefunItems.TREE_GROWTH_ACCELERATOR,SlimefunItems.HARDENED_GLASS,
@@ -208,6 +222,90 @@ public class DynaTechItemsSetup {
                 .setEnergyCapacity(512)
                 .setEnergyConsumption(32)
                 .setProcessingSpeed(1)
+                .register(plugin);
+
+        new GrowthChamberMK2(DynaTechItems.DynaTechGeneral, DynaTechItems.GROWTH_CHAMBER_MK2, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        SlimefunItems.STEEL_PLATE,DynaTechItems.GROWTH_CHAMBER,SlimefunItems.STEEL_PLATE,
+                        new ItemStack(Material.GRASS_BLOCK),new ItemStack(Material.LIME_STAINED_GLASS),new ItemStack(Material.SAND),
+                        SlimefunItems.STEEL_PLATE,DynaTechItems.GROWTH_CHAMBER,SlimefunItems.STEEL_PLATE
+
+                })
+                .setEnergyCapacity(1024)
+                .setEnergyConsumption(128)
+                .setProcessingSpeed(3)
+                .register(plugin);
+
+        new GrowthChamberEnd(DynaTechItems.DynaTechGeneral, DynaTechItems.GROWTH_CHAMBER_END, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        SlimefunItems.HARDENED_GLASS,new ItemStack(Material.MAGENTA_STAINED_GLASS),SlimefunItems.HARDENED_GLASS,
+                        new ItemStack(Material.PURPUR_BLOCK),new ItemStack(Material.CHORUS_FLOWER),new ItemStack(Material.END_STONE),
+                        DynaTechItems.STAINLESS_STEEL,DynaTechItems.GROWTH_CHAMBER,DynaTechItems.STAINLESS_STEEL
+
+                })
+                .setEnergyCapacity(512)
+                .setEnergyConsumption(32)
+                .setProcessingSpeed(1)
+                .register(plugin);
+
+        new GrowthChamberEndMK2(DynaTechItems.DynaTechGeneral, DynaTechItems.GROWTH_CHAMBER_END_MK2, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        SlimefunItems.STEEL_PLATE,DynaTechItems.GROWTH_CHAMBER_END,SlimefunItems.STEEL_PLATE,
+                        new ItemStack(Material.PURPUR_PILLAR),new ItemStack(Material.PURPLE_STAINED_GLASS),new ItemStack(Material.END_STONE_BRICKS),
+                        SlimefunItems.STEEL_PLATE,DynaTechItems.GROWTH_CHAMBER_END,SlimefunItems.STEEL_PLATE
+
+                })
+                .setEnergyCapacity(1024)
+                .setEnergyConsumption(128)
+                .setProcessingSpeed(3)
+                .register(plugin);
+
+        new GrowthChamberNether(DynaTechItems.DynaTechGeneral, DynaTechItems.GROWTH_CHAMBER_NETHER, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        SlimefunItems.HARDENED_GLASS,new ItemStack(Material.RED_STAINED_GLASS),SlimefunItems.HARDENED_GLASS,
+                        new ItemStack(Material.CRIMSON_NYLIUM),new ItemStack(Material.SOUL_SAND),new ItemStack(Material.WARPED_NYLIUM),
+                        DynaTechItems.STAINLESS_STEEL,DynaTechItems.GROWTH_CHAMBER,DynaTechItems.STAINLESS_STEEL
+
+                })
+                .setEnergyCapacity(512)
+                .setEnergyConsumption(32)
+                .setProcessingSpeed(1)
+                .register(plugin);
+
+        new GrowthChamberNetherMK2(DynaTechItems.DynaTechGeneral, DynaTechItems.GROWTH_CHAMBER_NETHER_MK2, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        SlimefunItems.STEEL_PLATE,DynaTechItems.GROWTH_CHAMBER_NETHER,SlimefunItems.STEEL_PLATE,
+                        new ItemStack(Material.CRIMSON_NYLIUM),new ItemStack(Material.SOUL_SAND),new ItemStack(Material.WARPED_NYLIUM),
+                        SlimefunItems.STEEL_PLATE,DynaTechItems.GROWTH_CHAMBER_NETHER,SlimefunItems.STEEL_PLATE
+
+                })
+                .setEnergyCapacity(1024)
+                .setEnergyConsumption(128)
+                .setProcessingSpeed(3)
+                .register(plugin);
+
+        new GrowthChamberOcean(DynaTechItems.DynaTechGeneral, DynaTechItems.GROWTH_CHAMBER_OCEAN, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        SlimefunItems.HARDENED_GLASS,new ItemStack(Material.CYAN_STAINED_GLASS),SlimefunItems.HARDENED_GLASS,
+                        new ItemStack(Material.WATER_BUCKET),new ItemStack(Material.SAND),new ItemStack(Material.WATER_BUCKET),
+                        DynaTechItems.STAINLESS_STEEL,DynaTechItems.GROWTH_CHAMBER,DynaTechItems.STAINLESS_STEEL
+
+                })
+                .setEnergyCapacity(512)
+                .setEnergyConsumption(32)
+                .setProcessingSpeed(1)
+                .register(plugin);
+
+        new GrowthChamberOceanMK2(DynaTechItems.DynaTechGeneral, DynaTechItems.GROWTH_CHAMBER_OCEAN_MK2, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        SlimefunItems.STEEL_PLATE,DynaTechItems.GROWTH_CHAMBER_OCEAN,SlimefunItems.STEEL_PLATE,
+                        new ItemStack(Material.GRAVEL),new ItemStack(Material.LIGHT_BLUE_STAINED_GLASS),new ItemStack(Material.DIRT),
+                        SlimefunItems.STEEL_PLATE,DynaTechItems.GROWTH_CHAMBER_OCEAN,SlimefunItems.STEEL_PLATE
+
+                })
+                .setEnergyCapacity(1024)
+                .setEnergyConsumption(128)
+                .setProcessingSpeed(3)
                 .register(plugin);
 
         new AntigravityBubble(DynaTechItems.DynaTechGeneral, DynaTechItems.ANTIGRAVITY_BUBBLE, RecipeType.ENHANCED_CRAFTING_TABLE,
@@ -312,6 +410,16 @@ public class DynaTechItemsSetup {
                 .setEnergyProduction(16)
                 .register(plugin);
 
+        new HydroGenerator(DynaTechItems.DynaTechGeneral, DynaTechItems.WATER_TURBINE, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        DynaTechItems.WATER_MILL, DynaTechItems.STAINLESS_STEEL, DynaTechItems.WATER_MILL,
+                        SlimefunItems.SOLDER_INGOT, SlimefunItems.GOLD_8K, SlimefunItems.SOLDER_INGOT,
+                        DynaTechItems.WATER_MILL, DynaTechItems.STAINLESS_STEEL, DynaTechItems.WATER_MILL
+                })
+                .setEnergyCapacity(512)
+                .setEnergyProduction(64)
+                .register(plugin);
+
         new DragonEggGenerator(DynaTechItems.DynaTechGeneral, DynaTechItems.DRAGON_GENERATOR, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
                         new ItemStack(Material.CRYING_OBSIDIAN), new ItemStack(Material.END_STONE), new ItemStack(Material.CRYING_OBSIDIAN),
@@ -350,7 +458,10 @@ public class DynaTechItemsSetup {
                     null, SlimefunItems.NUCLEAR_REACTOR, null,
                     DynaTechItems.ADVANCED_MACHINE_SCRAP, DynaTechItems.ANCIENT_MACHINE_CORE, DynaTechItems.ADVANCED_MACHINE_SCRAP
 
-                }).register(plugin);
+                })
+                .setEnergyCapacity(32676)
+                .setEnergyProduction(1024)
+                .register(plugin);
         }
 
 }

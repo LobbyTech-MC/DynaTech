@@ -110,7 +110,8 @@ public class DynaTechItems {
             new CustomItem(SkullItem.fromHash("eb18cf9e1bf7ec57304ae92f2b00d91643cf0b65067dead34fb48baf18e3c385")),
             "&6Dimensional Home",
             "",
-            "&fTeleports you to a seperate dimensional home and back",
+            "&fTeleports you to a",
+            "&fseperate dimensional home and back",
             "",
             "&f&oHome Sweet Home",
             "",
@@ -121,7 +122,18 @@ public class DynaTechItems {
             new CustomItem(SkullItem.fromHash("f1e2428cb359988f4c4ff0e61de21385c62269de19a69762d773223b75dd1666")),
             "&6Healthy Item Band",
             "",
-            "&fWhen applied to armor or tools, gives you 1 level of Health Boost",
+            "&fWhen applied to armor or tools", 
+            "&fgives you 2 levels of Health Boost",
+            "",
+            "&f&oPowerup!"
+            );
+
+    public static final SlimefunItemStack ITEM_BAND_HASTE = new SlimefunItemStack("ITEM_BAND_HASTE",
+            new CustomItem(SkullItem.fromHash("4f01ec6331a3bc30a8204ec56398d08ca38788556bca9b81d776f6238d567367")),
+            "&6Hasty Item Band",
+            "",
+            "&fWhen applied to armor or tools",
+            "&fgives you 2 levels of Haste",
             "",
             "&f&oPowerup!"
             );
@@ -144,13 +156,98 @@ public class DynaTechItems {
             Material.GREEN_STAINED_GLASS,
             "&6生长室",
             "",
-            "&f自动种植一些植物.",
+            "&f自动种植 &e植物&f.",
             "",
             "&f&o就像一个小温室!",
             "",
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
             LoreBuilder.speed(1),
             LoreBuilder.powerPerSecond(32)
+            );
+
+    public static final SlimefunItemStack GROWTH_CHAMBER_MK2 = new SlimefunItemStack("GROWTH_CHAMBER_MK2",
+            Material.LIME_STAINED_GLASS,
+            "&6Growth Chamber MK2",
+            "",
+            "&fAutomatically grows &eplants&f.",
+            "",
+            "&f&oIts like a small greenhouse!",
+            "",
+            "&c3x production.",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
+            LoreBuilder.speed(3),
+            LoreBuilder.powerPerSecond(128)
+            );
+
+    public static final SlimefunItemStack GROWTH_CHAMBER_END = new SlimefunItemStack("GROWTH_CHAMBER_END",
+            Material.MAGENTA_STAINED_GLASS,
+            "&dEnd Growth Chamber",
+            "",
+            "&fAutomatically grows &dchorus flowers.",
+            "",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
+            LoreBuilder.speed(1),
+            LoreBuilder.powerPerSecond(32)
+            );
+
+    public static final SlimefunItemStack GROWTH_CHAMBER_END_MK2 = new SlimefunItemStack("GROWTH_CHAMBER_END_MK2",
+            Material.PURPLE_STAINED_GLASS,
+            "&dEnd Growth Chamber MK2",
+            "",
+            "&fAutomatically grows &dchorus flowers.",
+            "",
+            "&c3x production.",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
+            LoreBuilder.speed(3),
+            LoreBuilder.powerPerSecond(128)
+            );
+
+    public static final SlimefunItemStack GROWTH_CHAMBER_NETHER = new SlimefunItemStack("GROWTH_CHAMBER_NETHER",
+            Material.RED_STAINED_GLASS,
+            "&cNether Growth Chamber",
+            "",
+            "&fAutomatically grows &cnether &fplants.",
+            "",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
+            LoreBuilder.speed(1),
+            LoreBuilder.powerPerSecond(32)
+            );
+
+    public static final SlimefunItemStack GROWTH_CHAMBER_NETHER_MK2 = new SlimefunItemStack("GROWTH_CHAMBER_NETHER_MK2",
+            Material.RED_STAINED_GLASS,
+            "&cNether Growth Chamber MK2",
+            "",
+            "&fAutomatically grows &cnether &fplants.",
+            "",
+            "&c3x production.",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
+            LoreBuilder.speed(3),
+            LoreBuilder.powerPerSecond(128)
+            );
+
+    public static final SlimefunItemStack GROWTH_CHAMBER_OCEAN = new SlimefunItemStack("GROWTH_CHAMBER_OCEAN",
+            Material.CYAN_STAINED_GLASS,
+            "&bOcean Growth Chamber",
+            "",
+            "&fAutomatically grows &9water &fplants.",
+            "Can revive dead coral!",
+            "",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
+            LoreBuilder.speed(1),
+            LoreBuilder.powerPerSecond(32)
+            );
+
+    public static final SlimefunItemStack GROWTH_CHAMBER_OCEAN_MK2 = new SlimefunItemStack("GROWTH_CHAMBER_OCEAN_MK2",
+            Material.LIGHT_BLUE_STAINED_GLASS,
+            "&bOcean Growth Chamber MK2",
+            "",
+            "&fAutomatically grows &9water &fplants.",
+            "Can revive dead coral!",
+            "",
+            "&c3x production.",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
+            LoreBuilder.speed(3),
+            LoreBuilder.powerPerSecond(128)
             );
 
     public static final SlimefunItemStack ANTIGRAVITY_BUBBLE = new SlimefunItemStack("ANTIGRAVITY_BUBBLE",
@@ -228,9 +325,9 @@ public class DynaTechItems {
 
     public static final SlimefunItemStack BANDAID_MANAGER = new SlimefunItemStack("BANDAID_MANAGER",
             Material.LAPIS_BLOCK,
-            "&6物品纽带管理器",
+            "&6物品绑定管理器",
             "",
-            "&f管理是否应用物品纽带",
+            "&f管理物品绑定",
             "",
             LoreBuilder.machine(MachineTier.ADVANCED, MachineType.MACHINE),
             LoreBuilder.powerPerSecond(48)
@@ -248,6 +345,17 @@ public class DynaTechItems {
             LoreBuilder.powerPerSecond(16)
             );
 
+    public static final SlimefunItemStack WATER_TURBINE = new SlimefunItemStack("WATER_TURBINE",
+            Material.PRISMARINE_WALL,
+            "&6Hydro Turbine",
+            "",
+            "&fCreates energy from flowing water",
+            "",
+            LoreBuilder.machine(MachineTier.MEDIUM, MachineType.GENERATOR),
+            LoreBuilder.powerBuffer(512),
+            LoreBuilder.powerPerSecond(64)
+            );
+
     public static final SlimefunItemStack DRAGON_GENERATOR = new SlimefunItemStack("DRAGON_GENERATOR",
             Material.GRAY_CONCRETE
             ,"&6龙蛋发电机",
@@ -263,7 +371,8 @@ public class DynaTechItems {
             Material.SPRUCE_WOOD,
             "&6切片发电机",
             "",
-            "&f用耐久度不满的物品发电",
+            "&f使用损坏的物品发电",
+            "&f(有原版耐久度且不满)",
             "",
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.GENERATOR),
             LoreBuilder.powerBuffer(256),
