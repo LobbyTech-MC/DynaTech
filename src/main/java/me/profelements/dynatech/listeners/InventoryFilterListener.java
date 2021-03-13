@@ -1,10 +1,10 @@
 package me.profelements.dynatech.listeners;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nonnull;
-
+import io.github.thebusybiscuit.slimefun4.api.player.PlayerBackpack;
+import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;
+import me.mrCookieSlime.Slimefun.api.Slimefun;
+import me.profelements.dynatech.DynaTech;
+import me.profelements.dynatech.items.tools.InventoryFilter;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,22 +12,17 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.thebusybiscuit.slimefun4.api.player.PlayerBackpack;
-import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;
-import me.mrCookieSlime.Slimefun.api.Slimefun;
-import me.profelements.dynatech.DynaTech;
-import me.profelements.dynatech.items.tools.InventoryFilter;
+import javax.annotation.Nonnull;
+import java.util.EnumSet;
+import java.util.Set;
 
 public class InventoryFilterListener implements Listener {
-
-    private final DynaTech plugin;
+    
     private final InventoryFilter inventoryFilter;
-    private List<Material> blacklistedMaterials = new ArrayList<>();
+    private final Set<Material> blacklistedMaterials = EnumSet.noneOf(Material.class);
 
     public InventoryFilterListener(@Nonnull DynaTech plugin, @Nonnull InventoryFilter inventoryFilter) {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
-
-        this.plugin = plugin;
         this.inventoryFilter = inventoryFilter;
     }
 
@@ -51,9 +46,7 @@ public class InventoryFilterListener implements Listener {
     }
 
     private void filterItems(@Nonnull Player p, @Nonnull ItemStack inventoryFilter) {
-        PlayerProfile.getBackpack(inventoryFilter, backpack -> {
-            DynaTech.runSync(() -> filterInventory(p, backpack));
-        });
+        PlayerProfile.getBackpack(inventoryFilter, backpack -> DynaTech.runSync(() -> filterInventory(p, backpack)));
     }
 
     private void filterInventory(@Nonnull Player p, @Nonnull PlayerBackpack backpack) {
@@ -67,11 +60,12 @@ public class InventoryFilterListener implements Listener {
             }
         }
 
-        for (ItemStack item : p.getInventory().getContents()) {
+        //CANT DROP AIR SO HAVE TO ITERATE THROUGH THE INVENTORY
+        for (ItemStack item : p.getInventory().getStorageContents()) {
             if (item != null && blacklistedMaterials.contains(item.getType())) {
                     item.setAmount(0);
+                    break;
             }
-
         }
     }
     

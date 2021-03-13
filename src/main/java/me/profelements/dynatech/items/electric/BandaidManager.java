@@ -31,29 +31,19 @@ public class BandaidManager extends AMachine {
                     if (sfBand instanceof ItemBand) {
                         ItemBand band = (ItemBand) sfBand;
                         ItemStack result = band.applyToItem(target).clone();
-                        
-                        if(result == null) {
-                            return null;
-                        }
 
                         inv.consumeItem(getInputSlots()[0]);
                         inv.consumeItem(getInputSlots()[1]);
 
-                        MachineRecipe recipe = new MachineRecipe(30, new ItemStack[] {target, itemBand}, new ItemStack[] {result});
-
-                        return recipe;
+                        return new MachineRecipe(30, new ItemStack[] {target, itemBand}, new ItemStack[] {result});
                     }
                     
                 }
             } else if (ItemBand.containsItemBand(target)) {
-                String id = PersistentDataAPI.getString(target.getItemMeta(), ItemBand.key);
+                String id = PersistentDataAPI.getString(target.getItemMeta(), ItemBand.KEY);
                 if (SlimefunItem.getByID(id) != null) {
                     SlimefunItem sfItem = SlimefunItem.getByID(id);
                     ItemStack result = ItemBand.removeFromItem(target).clone();
-
-                    if(result == null) {
-                        return null;
-                    }
 
                     inv.consumeItem(getInputSlots()[0]);
 

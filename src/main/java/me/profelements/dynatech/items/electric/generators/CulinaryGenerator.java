@@ -16,6 +16,8 @@ import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.electric.abstracts.AMachineGenerator;
 
+import javax.annotation.Nonnull;
+
 public class CulinaryGenerator extends AMachineGenerator {
 
     private ItemSetting<Boolean> exoticGardenIntegration = new ItemSetting<Boolean>("exotic-garden-integration", true);
@@ -79,15 +81,12 @@ public class CulinaryGenerator extends AMachineGenerator {
     public MachineFuel findRecipe(BlockMenu inv, Map<Integer, Integer> found) {
         if (DynaTech.isExoticGardenInstalled() && exoticGardenIntegration.getValue()) {
             for (int inputSlot : getInputSlots()) {
-                ItemStack item = inv.getItemInSlot(inputSlot);
-                if (item != null && SlimefunItem.getByItem(item) != null) {
-                    SlimefunItem sfItem = SlimefunItem.getByItem(item);
-                    if (sfItem instanceof CustomFood) {
-                        CustomFood cfItem = (CustomFood) sfItem;
-                        MachineFuel fuel = new MachineFuel(cfItem.getFoodValue()*4, sfItem.getItem());    
-                        inv.consumeItem(inputSlot);                
-                        return fuel;
-                    }            
+                SlimefunItem sfItem = SlimefunItem.getByItem(inv.getItemInSlot(inputSlot));
+                if (sfItem instanceof CustomFood) {
+                    CustomFood cfItem = (CustomFood) sfItem;
+                    MachineFuel fuel = new MachineFuel(cfItem.getFoodValue()*4, sfItem.getItem());    
+                    inv.consumeItem(inputSlot);                
+                    return fuel;
                 }
             }
         }
@@ -100,6 +99,7 @@ public class CulinaryGenerator extends AMachineGenerator {
        return "CULINARY_GENERATOR";
     }
 
+    @Nonnull
     @Override
     public ItemStack getProgressBar() {
         return new ItemStack(Material.IRON_SHOVEL);

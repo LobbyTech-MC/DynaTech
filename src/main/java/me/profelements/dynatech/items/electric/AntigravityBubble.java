@@ -1,34 +1,27 @@
 package me.profelements.dynatech.items.electric;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
-
+import me.mrCookieSlime.Slimefun.Lists.RecipeType;
+import me.mrCookieSlime.Slimefun.Objects.Category;
+import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import me.profelements.dynatech.items.electric.abstracts.AMachine;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-import me.profelements.dynatech.items.electric.abstracts.AMachine;
+import java.util.*;
 
 public class AntigravityBubble extends AMachine {
 
-    private Set<UUID> enabledPlayers = new HashSet<>();
+    private final Set<UUID> enabledPlayers = new HashSet<>();
 
-    private static int[] BORDER = new int[] { 1, 2, 6, 7, 9, 10, 11, 15, 16, 17, 19, 20, 24, 25 };
-    private static int[] BORDER_IN = new int[] { 3, 4, 5, 12, 14, 21, 22, 23 };
-    private static int[] BORDER_OUT = new int[] { 0, 8, 18, 26 };
+    private static final int[] BORDER = new int[] { 1, 2, 6, 7, 9, 10, 11, 15, 16, 17, 19, 20, 24, 25 };
+    private static final int[] BORDER_IN = new int[] { 3, 4, 5, 12, 14, 21, 22, 23 };
+    private static final int[] BORDER_OUT = new int[] { 0, 8, 18, 26 };
 
     public AntigravityBubble(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
-
     }
 
     @Override
@@ -38,8 +31,7 @@ public class AntigravityBubble extends AMachine {
     }
 
     private void clearFlightFromPlayer(Block block) {
-        Location l = new Location(block.getWorld(), block.getX(), block.getY(), block.getZ());
-        for (Player p : l.getWorld().getPlayers()) {
+        for (Player p : block.getWorld().getPlayers()) {
             if (enabledPlayers.contains(p.getUniqueId())) {
                 p.setFlying(false);
                 p.setAllowFlight(false);
@@ -55,7 +47,7 @@ public class AntigravityBubble extends AMachine {
 
     protected void doFlightIfAvailable(Block block) {
         if (getCharge(block.getLocation()) < getEnergyConsumption()) {
-        return;
+            return;
         }
 
         for (Player p : block.getWorld().getPlayers()) {
@@ -87,7 +79,7 @@ public class AntigravityBubble extends AMachine {
                 }
             }
 
-            for(UUID playerToRemove : plrsToRemove) {
+            for (UUID playerToRemove : plrsToRemove) {
                 Player plyr = Bukkit.getPlayer(playerToRemove);
 
                 if (plyr != null) {
@@ -100,7 +92,7 @@ public class AntigravityBubble extends AMachine {
             }
             plrsToRemove.clear();
         }        
-    };
+    }
 
     @Override
     public boolean isGraphical() {
@@ -111,7 +103,6 @@ public class AntigravityBubble extends AMachine {
     public String getMachineIdentifier() {
         return "ANTIGRAVITY_BUBBLE";
     }
-
 
     @Override
     public List<int[]> getBorders() {
@@ -127,6 +118,7 @@ public class AntigravityBubble extends AMachine {
     public int[] getInputSlots() {
         return new int[] {13};
     }
+
     @Override
     public int[] getOutputSlots() {
         return new int[] {13};

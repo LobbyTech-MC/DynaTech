@@ -7,6 +7,7 @@ import org.bukkit.WorldCreator;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 
+import io.github.mooy1.infinitylib.PluginUtils;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import me.mrCookieSlime.Slimefun.cscorelib2.config.Config;
 import me.mrCookieSlime.Slimefun.cscorelib2.updater.GitHubBuildsUpdater;
@@ -26,23 +27,23 @@ import javax.annotation.Nullable;
 public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
     private static DynaTech instance;
-
+    private static boolean exoticGardenInstalled;
+    
     @Override
     public void onEnable() {
         instance = this;
+        exoticGardenInstalled = Bukkit.getServer().getPluginManager().isPluginEnabled("ExoticGarden");
+        
+        saveDefaultConfig();
+        
         Config cfg = new Config(this);
+        
         final Metrics metrics = new Metrics(this, 9689);
 
         if (!cfg.getBoolean("options.disable-dimensionalhome-world")) {
             WorldCreator worldCreator = new WorldCreator("dimensionalhome");
             worldCreator.generator(new DimensionalHomeDimension());
             worldCreator.createWorld();
-        }
-        
-
-
-        if (cfg.getBoolean("options.auto-update")) {
-            new GitHubBuildsUpdater(this, getFile(), "ProfElements/DynaTech/master").start();
         }
 
         DynaTechItemsSetup.setup(this);
@@ -52,11 +53,14 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
         //Tasks
         getServer().getScheduler().runTaskTimerAsynchronously(DynaTech.getInstance(), new ItemBandTask(), 0L, 5 * 20L);
+
+        PluginUtils.setup("DynaTech", this, "ProfElements/DynaTech/master", getFile());
+        PluginUtils.startTicker(() -> {});
     }
 
     @Override
     public void onDisable() {
-        Bukkit.getScheduler().cancelTasks(DynaTech.getInstance());
+        Bukkit.getScheduler().cancelTasks(this);
 
         instance = null;
     }
@@ -66,6 +70,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
         return "https://github.com/ProfElements/ExtraStuff/issues";
     }
 
+    @Nonnull
     @Override
     public JavaPlugin getJavaPlugin() {
         return this;
@@ -77,10 +82,8 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
     }
 
     public static boolean isExoticGardenInstalled() {
-        return Bukkit.getServer().getPluginManager().isPluginEnabled("ExoticGarden");
+        return exoticGardenInstalled;
     }
-
-
 
     @Nullable
     public static BukkitTask runSync(@Nonnull Runnable runnable) {
@@ -92,4 +95,5 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
         return instance.getServer().getScheduler().runTask(getInstance(), runnable);
     }
+    
 }

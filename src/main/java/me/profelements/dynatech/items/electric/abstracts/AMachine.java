@@ -9,8 +9,6 @@ import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import io.github.thebusybiscuit.slimefun4.utils.itemstack.ItemStackWrapper;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
-import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
-import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
@@ -29,7 +27,6 @@ import org.apache.commons.lang.Validate;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
@@ -115,11 +112,9 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
         });
     }
 
-    public void blockExtras(Block b) {
-    };
+    public void blockExtras(Block b) { }
 
-    public void newMachineInstance(BlockMenu menu, Block b) {
-    };
+    public void newMachineInstance(BlockMenu menu, Block b) { }
 
     @ParametersAreNonnullByDefault
     public AMachine(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, ItemStack recipeOutput) {
@@ -128,36 +123,13 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
     }
 
     public void constructMenu(BlockMenuPreset preset) {
-        for (int i : getBorders().get(0)) {
-            preset.addItem(i, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
-        }
-
-        for (int i : getBorders().get(1)) {
-            preset.addItem(i, ChestMenuUtils.getInputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
-        }
-
-        for (int i : getBorders().get(2)) {
-            preset.addItem(i, ChestMenuUtils.getOutputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
-        }
+        List<int[]> borders = getBorders();
+        
+        preset.drawBackground(borders.get(0));
+        preset.drawBackground(ChestMenuUtils.getInputSlotTexture(), borders.get(1));
+        preset.drawBackground(ChestMenuUtils.getOutputSlotTexture(), borders.get(2));
 
         preset.addItem(getProgressBarSlot(), new CustomItem(Material.BLACK_STAINED_GLASS_PANE, " "), ChestMenuUtils.getEmptyClickHandler());
-
-        for (int i : getOutputSlots()) {
-            preset.addMenuClickHandler(i, new ChestMenu.AdvancedMenuClickHandler() {
-
-                @Override
-                public boolean onClick(Player p, int slot, ItemStack cursor, ClickAction action) {
-                    return false;
-                }
-
-                @Override
-                public boolean onClick(InventoryClickEvent e, Player p, int slot, ItemStack cursor, ClickAction action) {
-                    return cursor == null || cursor.getType() == null || cursor.getType() == Material.AIR;
-                }
-
-            });
-
-        }
     }
 
     public boolean isGraphical() {
@@ -335,6 +307,7 @@ public abstract class AMachine extends SlimefunItem implements EnergyNetComponen
 
     public abstract String getMachineIdentifier();
 
+    @Nonnull
     @Override
     public EnergyNetComponentType getEnergyComponentType() {
         return EnergyNetComponentType.CONSUMER;

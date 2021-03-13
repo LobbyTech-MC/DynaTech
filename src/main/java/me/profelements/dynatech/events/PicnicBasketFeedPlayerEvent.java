@@ -48,7 +48,6 @@ public class PicnicBasketFeedPlayerEvent extends PlayerEvent implements Cancella
         return itemConsumed.clone();
     }
 
-    @Nonnull
     public void setConsumedItem(@Nonnull ItemStack item) {
         Validate.notNull(item, "消耗品不能为空.");
         Validate.isTrue(item.getType().isEdible(), "物品必须是可食用的.");

@@ -28,7 +28,6 @@ public class PotionSprinkler extends AMachine {
 
     private final Set<UUID> enabledPlayers = new HashSet<>();
     private int plyrsApplied = 0;
-    private final int maxPotionAppliedAmount = 8;
 
     private static final int[] BORDER = new int[] { 1, 2, 6, 7, 9, 10, 11, 15, 16, 17, 19, 20, 24, 25 };
     private static final int[] BORDER_IN = new int[] { 3, 4, 5, 12, 14, 21, 22, 23 };
@@ -44,14 +43,12 @@ public class PotionSprinkler extends AMachine {
             return;
         }
 
-        Set<UUID> plyrsToRemove = new HashSet<>();
-
         BlockMenu menu = BlockStorage.getInventory(b);
         ItemStack item = menu.getItemInSlot(getInputSlots()[0]);
 
         if (item != null && item.getType() == Material.POTION && item.hasItemMeta()) {
             PotionMeta potionMeta = (PotionMeta) item.getItemMeta();
-            if (potionMeta.getBasePotionData() != null) {
+            if (potionMeta != null) {
                 PotionData pd = potionMeta.getBasePotionData();
                 for (Player p : b.getWorld().getPlayers()) {
                     double distance = b.getLocation().distance(p.getLocation());
@@ -64,7 +61,7 @@ public class PotionSprinkler extends AMachine {
                     }
                 }
             }
-            if (plyrsApplied > maxPotionAppliedAmount) {
+            if (plyrsApplied > 8) {
                 menu.consumeItem(getInputSlots()[0]);
                 plyrsApplied = 0;
             }
@@ -73,12 +70,8 @@ public class PotionSprinkler extends AMachine {
         for (UUID plyrUUID : enabledPlayers) {
             Player plyr = Bukkit.getPlayer(plyrUUID);
             if (plyr != null && plyr.getActivePotionEffects().isEmpty()) {
-                plyrsToRemove.add(plyr.getUniqueId());
+                enabledPlayers.remove(plyr.getUniqueId());
             }
-        }
-
-        for (UUID plyrUUID : plyrsToRemove) {
-            enabledPlayers.remove(plyrUUID);
         }
     }
 
@@ -122,6 +115,4 @@ public class PotionSprinkler extends AMachine {
         return 4;
     }
 
-   
-    
 }

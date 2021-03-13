@@ -39,6 +39,7 @@ import me.profelements.dynatech.items.tools.AngelGem;
 import me.profelements.dynatech.items.tools.DimensionalHome;
 import me.profelements.dynatech.items.tools.ElectricalStimulator;
 import me.profelements.dynatech.items.tools.InventoryFilter;
+import me.profelements.dynatech.items.tools.Orechid;
 import me.profelements.dynatech.items.tools.Scoop;
 
 import org.bukkit.Material;
@@ -52,7 +53,7 @@ public class DynaTechItemsSetup {
 
     private DynaTechItemsSetup() {}
 
-    public static final void setup(@Nonnull DynaTech plugin) {
+    public static void setup(@Nonnull DynaTech plugin) {
 
         //Materials
         new SlimefunItem(DynaTechItems.DynaTechGeneral, DynaTechItems.STAINLESS_STEEL, RecipeType.SMELTERY,
@@ -123,18 +124,18 @@ public class DynaTechItemsSetup {
 
         new Bee(DynaTechItems.DynaTechGeneral, DynaTechItems.ROBOTIC_BEE, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
-                        SlimefunItems.REINFORCED_PLATE, SlimefunItems.REINFORCED_PLATE, SlimefunItems.REINFORCED_PLATE,
-                        DynaTechItems.VEX_GEM, DynaTechItems.MACHINE_SCRAP, DynaTechItems.VEX_GEM,
-                        SlimefunItems.REINFORCED_PLATE, DynaTechItems.ANCIENT_MACHINE_CORE, SlimefunItems.REINFORCED_PLATE
-                }, 7
+                        SlimefunItems.REINFORCED_ALLOY_INGOT, SlimefunItems.REINFORCED_ALLOY_INGOT, SlimefunItems.REINFORCED_ALLOY_INGOT,
+                        SlimefunItems.SYNTHETIC_SAPPHIRE, DynaTechItems.MACHINE_SCRAP, SlimefunItems.SYNTHETIC_SAPPHIRE,
+                        SlimefunItems.REINFORCED_ALLOY_INGOT, DynaTechItems.ANCIENT_MACHINE_CORE, SlimefunItems.REINFORCED_ALLOY_INGOT
+                }, 6
                 ).register(plugin);
 
         new Bee(DynaTechItems.DynaTechGeneral, DynaTechItems.ADVANCED_ROBOTIC_BEE, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
                 SlimefunItems.REINFORCED_PLATE, SlimefunItems.REINFORCED_PLATE, SlimefunItems.REINFORCED_PLATE,
-                DynaTechItems.ANGEL_GEM, DynaTechItems.ADVANCED_MACHINE_SCRAP, DynaTechItems.ANGEL_GEM,
+                DynaTechItems.VEX_GEM, DynaTechItems.ADVANCED_MACHINE_SCRAP, DynaTechItems.VEX_GEM,
                 SlimefunItems.GOLD_24K_BLOCK, DynaTechItems.ANCIENT_MACHINE_CORE, SlimefunItems.GOLD_24K_BLOCK
-                }, 10
+                }, 8
                 ).register(plugin);
 
         //Backpacks
@@ -354,8 +355,8 @@ public class DynaTechItemsSetup {
         
         new MaterialHive(DynaTechItems.DynaTechGeneral, DynaTechItems.MATERIAL_HIVE, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
-                    SlimefunItems.REINFORCED_PLATE, SlimefunItems.BOOSTED_URANIUM, SlimefunItems.REINFORCED_PLATE,
-                    SlimefunItems.REINFORCED_PLATE, new ItemStack(Material.BEEHIVE), SlimefunItems.REINFORCED_PLATE,
+                    SlimefunItems.HARDENED_METAL_INGOT, SlimefunItems.SYNTHETIC_DIAMOND, SlimefunItems.HARDENED_METAL_INGOT,
+                    SlimefunItems.HARDENED_METAL_INGOT, new ItemStack(Material.BEEHIVE), SlimefunItems.HARDENED_METAL_INGOT,
                     DynaTechItems.ADVANCED_MACHINE_SCRAP, DynaTechItems.MACHINE_SCRAP, DynaTechItems.ADVANCED_MACHINE_SCRAP
                 })
                 .setEnergyCapacity(8192)
@@ -399,6 +400,18 @@ public class DynaTechItemsSetup {
         .setProcessingSpeed(1)
         .register(plugin);
         
+        new Orechid(DynaTechItems.DynaTechGeneral, DynaTechItems.ORECHID, RecipeType.MAGIC_WORKBENCH,
+                new ItemStack[] {
+                    SlimefunItems.ENDER_RUNE, SlimefunItems.ENDER_RUNE, SlimefunItems.ENDER_RUNE,
+                    SlimefunItems.MAGIC_LUMP_3, new ItemStack(Material.WITHER_ROSE), SlimefunItems.MAGIC_LUMP_3,
+                    SlimefunItems.HARDENED_METAL_INGOT, SlimefunItems.REINFORCED_PLATE, SlimefunItems.HARDENED_METAL_INGOT
+                }
+        )
+        .setEnergyCapacity(16384)
+        .setEnergyConsumption(1024)
+        .setProcessingSpeed(1)
+        .register(plugin);
+
         //Generators
         new HydroGenerator(DynaTechItems.DynaTechGeneral, DynaTechItems.WATER_MILL, RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {

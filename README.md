@@ -2,6 +2,9 @@
 A set of item and machines that I made to make things easier for me and just for fun.
 Most of these could possibly be overpowered or heavily underpowered.
 
+### [Download](https://thebusybiscuit.github.io/builds/ProfElements/DynaTech/master/)
+[![Build Status](https://thebusybiscuit.github.io/builds/ProfElements/DynaTech/master/badge.svg)](https://thebusybiscuit.github.io/builds/ProfElements/DynaTech/master)
+
 ## Machines
 - **Auto-Kitchen** - If you have ExoticGarden installed, this machine will become available. It automatically crafts any Kitchen recipe inserted into it.
 - **Growth Chambers** - Automatically grow some plants. We have multiple variants for all your needs. Supports Exotic Garden saplings, plants, and bushes.
@@ -13,7 +16,7 @@ Most of these could possibly be overpowered or heavily underpowered.
 - **Wireless Charger** - Charges Rechargeable Items in a Players inventory in a 16 block radius around it
 - **Seed Plucker** - Plucks seed from plant-based material, supports Exotic Garden Fruits, but not essences.
 - **Item Band Manager** - Manages the application and ripping of Item Bands.
-
+- **Orechid** - Changes Stone and Netherack into Overworld and Nether ores respectively
 ## Generators
 - **Hydro Generator** - Generates energy from flowing water (Waterlog the generator)
 - **Dragon Egg Generator** - Generates energy from the warmth of a dragon egg. (Place the dragon egg on top)
