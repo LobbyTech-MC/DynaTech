@@ -25,9 +25,11 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerBucketFillEvent;
+import org.bukkit.event.block.CauldronLevelChangeEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -86,6 +88,16 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable, Listener {
                 meta.setLore(lore);
                 item.setItemMeta(meta);
                 DynaTech.runSync(() -> { block.setType(Material.AIR); });
+            }
+        }
+    }
+
+    @EventHandler
+    private void onCauldronFill(CauldronLevelChangeEvent e) {
+        if (e.getEntity() instanceof Player player) {
+            ItemStack item = player.getInventory().getItemInMainHand();
+            if (this.isItem(item) && this.canUse(player, true) && SlimefunItem.getByItem(item) instanceof LiquidTank) {
+                e.setCancelled(true);
             }
         }
     }
