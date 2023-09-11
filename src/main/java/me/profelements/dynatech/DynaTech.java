@@ -12,7 +12,7 @@ import me.profelements.dynatech.listeners.InventoryFilterListener;
 import me.profelements.dynatech.listeners.PicnicBasketListener;
 import me.profelements.dynatech.setup.DynaTechItemsSetup;
 import me.profelements.dynatech.tasks.ItemBandTask;
-import net.guizhanss.guizhanlibplugin.updater.GuizhanBuildsUpdaterWrapper;
+import net.guizhanss.guizhanlibplugin.updater.GuizhanUpdater;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.WorldCreator;
@@ -37,7 +37,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
         if (!getServer().getPluginManager().isPluginEnabled("GuizhanLibPlugin")) {
             getLogger().log(Level.SEVERE, "本插件需要 鬼斩前置库插件(GuizhanLibPlugin) 才能运行!");
-            getLogger().log(Level.SEVERE, "从此处下载: https://50l.cc/gzlib");
+            getLogger().log(Level.SEVERE, "从此处下载: https://50L.cc/gzlib");
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
@@ -50,9 +50,8 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
         new Metrics(this, 9689);
 
-        if (getConfig().getBoolean("options.auto-update") &&
-            getDescription().getVersion().startsWith("Build")) {
-            GuizhanBuildsUpdaterWrapper.start(this, getFile(), "ybw0014", "DynaTech", "master", false);
+        if (getConfig().getBoolean("options.auto-update") && getDescription().getVersion().startsWith("Build")) {
+            GuizhanUpdater.start(this, getFile(), "SlimefunGuguProject", "DynaTech", "master");
         }
 
         if (!getConfig().getBoolean("options.disable-dimensionalhome-world")) {
