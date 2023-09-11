@@ -1,6 +1,6 @@
 package me.profelements.dynatech;
 
-import com.google.common.base.Preconditions;
+import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
@@ -21,6 +21,9 @@ import org.bukkit.scheduler.BukkitTask;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import com.google.common.base.Preconditions;
+
 import java.util.logging.Level;
 
 public class DynaTech extends JavaPlugin implements SlimefunAddon {
@@ -50,10 +53,6 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
         new Metrics(this, 9689);
 
-        if (getConfig().getBoolean("options.auto-update") && getDescription().getVersion().startsWith("Build")) {
-            GuizhanUpdater.start(this, getFile(), "SlimefunGuguProject", "DynaTech", "master");
-        }
-
         if (!getConfig().getBoolean("options.disable-dimensionalhome-world")) {
             WorldCreator worldCreator = new WorldCreator("dimensionalhome");
             worldCreator.generator(new DimensionalHomeDimension());
@@ -68,6 +67,16 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
         //Tasks
         getServer().getScheduler().runTaskTimerAsynchronously(DynaTech.getInstance(), new ItemBandTask(), 0L, 5 * 20L);
         getServer().getScheduler().runTaskTimer(DynaTech.getInstance(), () -> this.tickInterval++, 0, TICK_TIME);
+
+
+        if (getConfig().getBoolean("options.auto-update") && getDescription().getVersion().startsWith("Build")) {
+            GuizhanUpdater.start(this, getFile(), "SlimefunGuguProject", "DynaTech", "master");
+        }
+
+        if (Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_19) == false) {
+            getLogger().warning("DynaTech 仅支持 1.19+，请更新服务器版本后运行本插件。");
+            getServer().getPluginManager().disablePlugin(this);
+        }
     }
 
     @Override
