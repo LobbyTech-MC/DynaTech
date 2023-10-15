@@ -33,6 +33,8 @@ public class MineralizedApiary extends AbstractElectricMachine {
     private ItemStack material = new ItemStack(Material.AIR);
 
 
+    private static final ItemStack PROGRESS_STACK = new CustomItemStack(Material.BEACON, "&f信息", "&f蜜蜂数量：{}", "&f生产速率：{}");
+
 
     public MineralizedApiary(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, ItemStack material) {
         super(itemGroup, item, recipeType, recipe);
@@ -117,7 +119,7 @@ public class MineralizedApiary extends AbstractElectricMachine {
         preset.drawBackground(ChestMenuUtils.getOutputSlotTexture(), OUTPUT_BORDER_SLOTS);
 
         preset.addItem(getProgressSlot(), new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " "), ChestMenuUtils.getEmptyClickHandler());
-        preset.addItem(20, new CustomItemStack(Material.BEACON, "&f信息", "&f蜜蜂数量: {}", "&f生产速度: {}"), ChestMenuUtils.getEmptyClickHandler());
+        preset.addItem(20, PROGRESS_STACK, ChestMenuUtils.getEmptyClickHandler());
  
     }
 
@@ -142,7 +144,7 @@ public class MineralizedApiary extends AbstractElectricMachine {
             currSpeed = 30 - ((beeCount - 1) * 10);
         }
 
-        ItemStack infoStack = new CustomItemStack(Material.BEACON, "&f信息", "&f蜜蜂数量: " + String.valueOf(beeCount), "&f生产速度: " + String.valueOf(currSpeed) + "s");
+        ItemStack infoStack = new CustomItemStack(Material.BEACON, "&f信息", "&f蜜蜂数量：" + String.valueOf(beeCount), "&f生产速率：" + String.valueOf(currSpeed) + " 秒");
         menu.replaceExistingItem(20, infoStack);
     }
 }
