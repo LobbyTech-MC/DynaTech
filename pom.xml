@@ -132,14 +132,14 @@
         <dependency>
             <groupId>net.guizhanss</groupId>
             <artifactId>GuizhanLibPlugin</artifactId>
-            <version>1.3.2</version>
+            <version>1.5.0</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
-            <groupId>io.github.baked-libs</groupId>
-            <artifactId>dough</artifactId>
-            <version>e0ba50b254</version>
+            <groupId>com.github.StarWishsama.dough</groupId>
+            <artifactId>dough-api</artifactId>
+            <version>65cfacbe4c</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
