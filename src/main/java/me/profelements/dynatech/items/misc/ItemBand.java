@@ -7,7 +7,6 @@ import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 import me.profelements.dynatech.DynaTech;
 import net.guizhanss.guizhanlib.minecraft.helper.potion.PotionEffectTypeHelper;
-import net.guizhanss.minecraft.dynatech.utils.ItemBandUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
