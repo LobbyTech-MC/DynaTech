@@ -1,12 +1,14 @@
 package me.profelements.dynatech.items.electric.machines;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.Material;
 import org.bukkit.block.Beehive;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -138,13 +140,25 @@ public class MineralizedApiary extends AbstractElectricMachine {
         return true;
     }
 
-    private void updateInfoStack(BlockMenu menu, int beeCount) {
+    private static void updateInfoStack(BlockMenu menu, int beeCount) {
+        Inventory inv = menu.toInventory();
+
+        if (inv == null || inv.getViewers().isEmpty()) {
+            return;
+        }
+
         int currSpeed = 100; 
         if (beeCount > 0) {
             currSpeed = 30 - ((beeCount - 1) * 10);
         }
 
-        ItemStack infoStack = new CustomItemStack(Material.BEACON, "&f信息", "&f蜜蜂数量：" + String.valueOf(beeCount), "&f生产速率：" + String.valueOf(currSpeed) + " 秒");
-        menu.replaceExistingItem(20, infoStack);
+        ItemStack item = PROGRESS_STACK.clone();
+        ItemMeta meta = item.getItemMeta();
+
+        meta.setDisplayName("&f信息");
+        meta.setLore(Arrays.asList("&f蜜蜂数量：" + beeCount, "&f生产速率：" + currSpeed + "秒"));
+        item.setItemMeta(meta);
+
+        menu.replaceExistingItem(20, item);
     }
 }
