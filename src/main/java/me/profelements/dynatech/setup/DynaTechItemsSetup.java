@@ -155,7 +155,7 @@ public class DynaTechItemsSetup {
         new Bee(DynaTechItems.DT_RESOURCES, DynaTechItems.BEE, DynaTechItems.DynaTechScoop,
             new ItemStack[] {
                 null, null, null,
-                null, new CustomItemStack(PlayerHead.getItemStack(PlayerSkin.fromHashCode("12724a9a4cdd68ba49415560e5be40b4a1c47cb5be1d66aedb52a30e62ef2d47")), "&aAny Bee"), null,
+                null, new CustomItemStack(PlayerHead.getItemStack(PlayerSkin.fromHashCode("12724a9a4cdd68ba49415560e5be40b4a1c47cb5be1d66aedb52a30e62ef2d47")), "&a任意蜜蜂"), null,
                 null, null, null
             }, 2
         ).register(plugin);
