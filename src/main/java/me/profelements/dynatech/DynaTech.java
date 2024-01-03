@@ -1,5 +1,6 @@
 package me.profelements.dynatech;
 
+import io.github.bakedlibs.dough.updater.BlobBuildUpdater;
 import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
@@ -62,7 +63,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
         DynaTechItemsSetup.setup(this);
         new PicnicBasketListener(this, (PicnicBasket) DynaTechItems.PICNIC_BASKET.getItem());
         new ElectricalStimulatorListener(this, (ElectricalStimulator) DynaTechItems.ELECTRICAL_STIMULATOR.getItem());
-        new InventoryFilterListener(this, (InventoryFilter) DynaTechItems.INVENTORY_FILTER.getItem());
+        new InventoryFilterListener(this);
 
         //Tasks
         getServer().getScheduler().runTaskTimerAsynchronously(DynaTech.getInstance(), new ItemBandTask(), 0L, 5 * 20L);
@@ -73,8 +74,8 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
             GuizhanUpdater.start(this, getFile(), "SlimefunGuguProject", "DynaTech", "master");
         }
 
-        if (Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_19) == false) {
-            getLogger().warning("DynaTech 仅支持 1.19+，请更新服务器版本后运行本插件。");
+        if (Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_20) == false) {
+            getLogger().warning("DynaTech 仅支持 1.20.4+，请更新服务器版本后运行本插件。");
             getServer().getPluginManager().disablePlugin(this);
         }
     }

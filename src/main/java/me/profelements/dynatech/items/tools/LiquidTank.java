@@ -83,7 +83,7 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable, Listener {
                 lore.add(ChatColor.WHITE + "液体存量: " + PersistentDataAPI.getInt(meta, FLUID_AMOUNT));
                 meta.setLore(lore);
                 item.setItemMeta(meta);
-                DynaTech.runSync(() -> { block.setType(Material.AIR); });
+                DynaTech.runSync(() -> block.setType(Material.AIR));
             }
         }
     }
@@ -129,7 +129,7 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable, Listener {
                             lore.add(ChatColor.WHITE + "液体存量: " + PersistentDataAPI.getInt(meta, FLUID_AMOUNT));
                             meta.setLore(lore);
                             item.setItemMeta(meta);
-                            DynaTech.runSync(() -> { block.setType(mat); });
+                            DynaTech.runSync(() -> block.setType(mat));
                         }
                     }
                 }

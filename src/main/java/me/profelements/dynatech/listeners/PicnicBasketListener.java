@@ -20,7 +20,7 @@ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 import javax.annotation.Nonnull;
@@ -137,7 +137,7 @@ public class PicnicBasketListener implements Listener {
     }
 
     private Map<Material, Integer> getFoodItems() {
-        Map<Material, Integer> foods = new HashMap<Material, Integer>();
+        EnumMap<Material, Integer> foods = new EnumMap<>(Material.class);
                 
         foods.put(Material.COOKED_PORKCHOP, 8);
         foods.put(Material.PUMPKIN_PIE, 8);

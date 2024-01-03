@@ -23,7 +23,6 @@ import java.util.List;
 
 public class ChippingGenerator extends AbstractGenerator {
 
-    private final int powerPerDurability = 8;
     
     private static final int[] INPUT_SLOTS = new int[] { 19, 20 };
     private static final int[] OUTPUT_SLOTS = new int[] { 24, 25 };
@@ -79,8 +78,7 @@ public class ChippingGenerator extends AbstractGenerator {
             ItemStack item =  inv.getItemInSlot(slot); 
             if (item != null && !item.getType().isAir() && item.hasItemMeta()) {
                 ItemMeta meta = item.getItemMeta(); 
-                if (meta instanceof Damageable && !meta.isUnbreakable()) {
-                    Damageable damage = (Damageable) meta; 
+                if (meta instanceof Damageable damage && !meta.isUnbreakable()) {
                     if (!damage.hasDamage()) {
                         int durability = item.getType().getMaxDurability(); 
                         inv.consumeItem(slot); 

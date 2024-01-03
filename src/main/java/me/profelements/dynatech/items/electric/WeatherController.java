@@ -50,11 +50,7 @@ public class WeatherController extends AbstractElectricTicker implements RecipeD
             @Nonnull
             @Override
             public int[] getSlotsAccessedByItemTransport(ItemTransportFlow flow) {
-                if (flow == ItemTransportFlow.INSERT) {
-                    return null;
-                } else {
-                    return null; 
-                }
+               return new int[] {};
             }
 
         };
@@ -129,13 +125,13 @@ public class WeatherController extends AbstractElectricTicker implements RecipeD
     public List<ItemStack> getDisplayRecipes() {
         List<ItemStack> items = new ArrayList<>();
         items.add(new ItemStack(Material.SUNFLOWER));
-        items.add(new CustomItemStack(Material.DIAMOND, "&fMakes its sunny in philadelphia."));
+        items.add(new CustomItemStack(Material.DIAMOND, "&f让费城充满阳光。"));
 
         items.add(new ItemStack(Material.LILAC));
-        items.add(new CustomItemStack(Material.DIAMOND, "&fMakes its rain while the old man snores"));
+        items.add(new CustomItemStack(Material.DIAMOND, "&f老人打鼾时下雨。"));
 
         items.add(new ItemStack(Material.CREEPER_HEAD));
-        items.add(new CustomItemStack(Material.DIAMOND, "&fMakes it thunder."));
+        items.add(new CustomItemStack(Material.DIAMOND, "&f雷电！"));
 
         return items;
     }
