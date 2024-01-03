@@ -31,20 +31,20 @@ public class InventoryFilterListener implements Listener {
 
     private void filterInv(@Nonnull Player p, @Nonnull EntityPickupItemEvent e) {
         List<ItemStack> itemBlackList = new ArrayList<>();
-        for (ItemStack item : p.getInventory().getContents()) {
-            if (SlimefunUtils.isItemSimilar(item,  DynaTechItems.INVENTORY_FILTER, true, false)) {
-                PlayerProfile.getBackpack(item, backpack -> {
-
-                        for (ItemStack bpItem : backpack.getInventory().getContents()) {
-                            if (bpItem != null && bpItem.getType() != Material.AIR) {
-                                itemBlackList.add(item);
-                            }
-                        }
-
-                });
-                break;
-            }
-        }
+//        for (ItemStack item : p.getInventory().getContents()) {
+//            if (SlimefunUtils.isItemSimilar(item,  DynaTechItems.INVENTORY_FILTER, true, false)) {
+//                PlayerProfile.getBackpack(item, backpack -> {
+//
+//                        for (ItemStack bpItem : backpack.getInventory().getContents()) {
+//                            if (bpItem != null && bpItem.getType() != Material.AIR) {
+//                                itemBlackList.add(item);
+//                            }
+//                        }
+//
+//                });
+//                break;
+//            }
+//        }
 
         //Clear and add back drops if not filtered by Inventory filtered
         for (ItemStack item : itemBlackList) {
