@@ -4,6 +4,6 @@ rules:
     upstream: ProfElements:master
     mergeMethod: merge
     assignees:
-        - ybw0014
+      - ybw0014
     conflictReviewers:
-        - ybw0014
+      - ybw0014
