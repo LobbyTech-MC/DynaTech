@@ -74,7 +74,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
         }
 
         if (!Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_20)) {
-            getLogger().warning("DynaTech 仅支持 1.20.4+，请更新服务器版本后运行本插件。");
+            getLogger().warning("DynaTech 仅支持 1.20+，请更新服务器版本后运行本插件。");
             getServer().getPluginManager().disablePlugin(this);
         }
     }
