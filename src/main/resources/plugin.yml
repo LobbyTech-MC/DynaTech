@@ -21,4 +21,4 @@ softdepend: [GuizhanLibPlugin, ExoticGarden, InfinityExpansion]
 version: ${project.version}
 
 ## This is the minimum minecraft version required to run your plugin.
-api-version: 1.19
+api-version: 1.16
