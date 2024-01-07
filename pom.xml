@@ -7,6 +7,8 @@
     <artifactId>DynaTech</artifactId>
     <version>1.0.0</version>
 
+    <name>DynaTech</name>
+
     <properties>
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
@@ -88,14 +90,14 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.19.3-R0.1-SNAPSHOT</version>
+            <version>1.20.4-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>com.github.StarWishsama</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>2023.06</version>
+            <version>eabaa21b05</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -119,7 +121,7 @@
         <dependency>
             <groupId>org.bstats</groupId>
             <artifactId>bstats-bukkit</artifactId>
-            <version>3.0.0</version>
+            <version>3.0.2</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -132,14 +134,14 @@
         <dependency>
             <groupId>net.guizhanss</groupId>
             <artifactId>GuizhanLibPlugin</artifactId>
-            <version>1.5.0</version>
+            <version>1.6.1</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>com.github.StarWishsama.dough</groupId>
             <artifactId>dough-api</artifactId>
-            <version>65cfacbe4c</version>
+            <version>20dcab228c</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
