@@ -8,9 +8,9 @@ import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineTier;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Radioactivity;
-import io.github.bakedlibs.dough.items.CustomItemStack;
-import io.github.bakedlibs.dough.skins.PlayerHead;
-import io.github.bakedlibs.dough.skins.PlayerSkin;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerHead;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerSkin;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;

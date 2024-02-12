@@ -111,12 +111,6 @@ public class PicnicBasketListener implements Listener {
                         Slimefun.getDatabaseManager().getProfileDataController().saveBackpackInventory(backpack, slot);
                         return true;
                     }
-
-                    Slimefun.getDatabaseManager().getProfileDataController().saveBackpackInventory(backpack, slot);
-                   return true;
-                } else { 
-                    //TODO: THIS SHOULD NEVER HAPPEN IF IT DOES SOMETHING DID A BIG NO NO
-                    return false; 
                 }
             }
         }
