@@ -60,6 +60,11 @@ public abstract class AbstractElectricMachine extends AbstractMachine implements
         return processingSpeed;
     }
 
+
+    public List<MachineRecipe> getRecipes() {
+        return recipes;
+    }
+
     public final AbstractElectricMachine setCapacity(int capacity) {
         Preconditions.checkArgument(capacity > 0, "The capacity must be greater then 0");
 

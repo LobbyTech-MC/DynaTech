@@ -1,12 +1,9 @@
 package me.profelements.dynatech.items.electric.generators;
 
-import io.github.thebusybiscuit.exoticgarden.items.CustomFood;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
-import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.common.ChatColors;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
@@ -15,7 +12,6 @@ import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineFuel;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
-import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.abstracts.AbstractGenerator;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -49,9 +45,10 @@ public class CulinaryGenerator extends AbstractGenerator {
 
     @Override
     public void postRegister() {
+        super.postRegister();
         registerDefaultFuelTypes();
-    } 
-
+    }
+    
     public void registerDefaultFuelTypes() {
         //1 Food Levels
         fuels.add(new MachineFuel(2, new ItemStack(Material.BEETROOT)));
@@ -97,16 +94,7 @@ public class CulinaryGenerator extends AbstractGenerator {
         fuels.add(new MachineFuel(36, new ItemStack(Material.COOKED_BEEF)));
         fuels.add(new MachineFuel(36, new ItemStack(Material.PUMPKIN_PIE)));
         
-        if(DynaTech.isExoticGardenInstalled() && exoticGardenIntegration.getValue()) {
-            for (SlimefunItem sfItem : Slimefun.getRegistry().getEnabledSlimefunItems()) {
-                if (sfItem instanceof CustomFood cfItem) {
-                    MachineFuel fuel = new MachineFuel(cfItem.getFoodValue() * 4, sfItem.getItem());
-                    fuels.add(fuel);
-                }
-            }
         }
-
-    }
     
     @Nonnull
     @Override
@@ -171,5 +159,9 @@ public class CulinaryGenerator extends AbstractGenerator {
         }
 
         return list;
+    }
+
+	public void registerFuel(ItemStack item, int i) {
+	    fuels.add(new MachineFuel(i, item));
     }
 }

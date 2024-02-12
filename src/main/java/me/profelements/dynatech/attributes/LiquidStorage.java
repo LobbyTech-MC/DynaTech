@@ -38,7 +38,6 @@ public interface LiquidStorage extends ItemAttribute {
         return getLiquidAmount(l, StorageCacheUtils.getBlock(l.toLocation()));
     }
 
-    //TODO: Move from CSCorelib Config to Dough Config
     default int getLiquidAmount(@Nonnull BlockPosition l, SlimefunBlockData data) {
         Preconditions.checkNotNull(l, "Location was null");
         Preconditions.checkNotNull(data, "Config was null");

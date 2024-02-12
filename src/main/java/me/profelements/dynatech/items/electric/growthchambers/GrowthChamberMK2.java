@@ -2,17 +2,14 @@ package me.profelements.dynatech.items.electric.growthchambers;
 
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
-import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
-import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.abstracts.AbstractElectricMachine;
 import net.guizhanss.minecraft.dynatech.backwardcompat.BCMaterial;
 import org.bukkit.Material;
@@ -98,22 +95,8 @@ public class GrowthChamberMK2 extends AbstractElectricMachine {
         registerRecipe(30, new ItemStack[] {new ItemStack(Material.DARK_OAK_SAPLING)}, new ItemStack[] {new ItemStack(Material.DARK_OAK_SAPLING , 9), new ItemStack(Material.DARK_OAK_LOG, 18), new ItemStack(Material.APPLE, 6), new ItemStack(Material.DARK_OAK_LEAVES, 9), new ItemStack(Material.STICK, 6)});
         registerRecipe(30, new ItemStack[] {new ItemStack(Material.JUNGLE_SAPLING)}, new ItemStack[] {new ItemStack(Material.JUNGLE_SAPLING, 9), new ItemStack(Material.JUNGLE_LOG, 18), new ItemStack(Material.APPLE, 6), new ItemStack(Material.JUNGLE_LEAVES, 9), new ItemStack(Material.STICK, 6)});
         registerRecipe(30, new ItemStack[] {new ItemStack(Material.ACACIA_SAPLING)}, new ItemStack[] {new ItemStack(Material.ACACIA_SAPLING, 9), new ItemStack(Material.ACACIA_LOG, 18), new ItemStack(Material.APPLE, 6), new ItemStack(Material.ACACIA_LEAVES, 9), new ItemStack(Material.STICK, 6)});
-        
-        if (DynaTech.isExoticGardenInstalled() && exoticGardenIntegration.getValue()) {
-            for (SlimefunItem item : Slimefun.getRegistry().getEnabledSlimefunItems()) {
-                if (item.getId().contains("_BUSH") || item.getId().contains("_PLANT") || item.getId().contains("_SAPLING")) {
-                    SlimefunItem fruit = SlimefunItem.getById(item.getId().split("_")[0]);
-                    SlimefunItem essence = SlimefunItem.getById(item.getId().split("_")[0] + "_ESSENCE");
-                    if ( fruit != null) { 
-                       registerRecipe(new MachineRecipe(30, new ItemStack[] {item.getItem()}, new ItemStack[] { item.getItem(), fruit.getItem()}));
-                    }
-
-                    if (essence != null) { 
-                       registerRecipe(new MachineRecipe(30, new ItemStack[] {item.getItem()}, new ItemStack[] { item.getItem(), essence.getItem()}));
-                    }
-                }
-            }
-        }
+        registerRecipe(30, new ItemStack[] {new ItemStack(Material.MANGROVE_PROPAGULE)}, new ItemStack[] {new ItemStack(Material.MANGROVE_PROPAGULE, 3), new ItemStack(Material.MANGROVE_LOG, 6)});
+        registerRecipe(30, new ItemStack[] {new ItemStack(Material.CHERRY_SAPLING)}, new ItemStack[] {new ItemStack(Material.CHERRY_SAPLING, 3), new ItemStack(Material.CHERRY_LOG, 6)}); 
     }
 
     @Override
