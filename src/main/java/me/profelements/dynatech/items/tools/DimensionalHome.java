@@ -28,7 +28,7 @@ public class DimensionalHome extends SlimefunItem {
     
     private static final NamespacedKey CHUNK_KEY = new NamespacedKey(DynaTech.getInstance(), "chunk-key");
     private static final World DIM_HOME_WORLD = Bukkit.getServer().getWorld("dimensionalhome");
-    private final Config CURRENT_HIGHEST_CHUNK_ID = new Config("plugins/DynaTech/current-chunk-highest.yml");
+    private static final Config CURRENT_HIGHEST_CHUNK_ID = new Config("plugins/DynaTech/current-chunk-highest.yml");
     private int id = CURRENT_HIGHEST_CHUNK_ID.getInt("current-chunk-highest-id");
 
     public DimensionalHome(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
@@ -52,8 +52,8 @@ public class DimensionalHome extends SlimefunItem {
                             Location dimHomeLocation = new Location(DIM_HOME_WORLD, 16 * chunkKey + 8d, 65, 8);
                             PaperLib.teleportAsync(p, dimHomeLocation);
                         } else {
-                            if (p.getBedSpawnLocation() != null) {
-                                PaperLib.teleportAsync(p, p.getBedSpawnLocation());
+                            if (p.getRespawnLocation() != null) {
+                                PaperLib.teleportAsync(p, p.getRespawnLocation());
                             } else {
                                 PaperLib.teleportAsync(p, Bukkit.getServer().getWorlds().get(0).getSpawnLocation());
                             }

@@ -16,6 +16,7 @@ import me.profelements.dynatech.items.electric.transfer.Tesseract;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
+
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -68,8 +69,7 @@ public class TesseractBinder extends SlimefunItem {
                     }
                 } else if (hasPermision && sfItem.getId().equals(DynaTechItems.TESSERACT.getItemId()) && blockLocation != null) {
                     ItemMeta im = item.getItemMeta();
-                    String locString = Tesseract.LocationToString(blockLocation);
-
+                    String locString = Tesseract.locationToString(blockLocation);
                     PersistentDataAPI.setString(im, Tesseract.WIRELESS_LOCATION_KEY, locString);
                     item.setItemMeta(im);
                     Tesseract.setItemLore(item, blockLocation);

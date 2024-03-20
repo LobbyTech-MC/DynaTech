@@ -10,8 +10,8 @@
     <name>DynaTech</name>
 
     <properties>
-        <maven.compiler.source>16</maven.compiler.source>
-        <maven.compiler.target>16</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -38,7 +38,7 @@
     </repositories>
 
     <build>
-        <finalName>${project.name} v${project.version}</finalName>
+    <finalName>${project.name}</finalName>
         <defaultGoal>clean package</defaultGoal>
         <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
 
@@ -97,7 +97,7 @@
         <dependency>
             <groupId>com.github.StarWishsama</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>eabaa21b05</version>
+            <version>2024.2</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -112,6 +112,14 @@
             <version>bec2020f94</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.github.SchnTgaiSpock</groupId>
+            <artifactId>Gastronomicon</artifactId>
+            <version>33e89f01e6</version>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
             <artifactId>jsr305</artifactId>
@@ -138,11 +146,5 @@
             <scope>provided</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.github.StarWishsama.dough</groupId>
-            <artifactId>dough-api</artifactId>
-            <version>20dcab228c</version>
-            <scope>compile</scope>
-        </dependency>
     </dependencies>
 </project>

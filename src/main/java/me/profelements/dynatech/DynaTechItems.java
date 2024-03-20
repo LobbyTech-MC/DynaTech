@@ -8,9 +8,9 @@ import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineTier;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Radioactivity;
-import io.github.bakedlibs.dough.items.CustomItemStack;
-import io.github.bakedlibs.dough.skins.PlayerHead;
-import io.github.bakedlibs.dough.skins.PlayerSkin;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerHead;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerSkin;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
@@ -21,6 +21,10 @@ import org.bukkit.inventory.ItemStack;
 
 
 public class DynaTechItems {
+
+    private static final String ID_LORE = "&7ID: <ID>";
+    private static final String RIGHT_CLICK_LORE = "&e右键点击&7打开";
+    private static final String THREE_X_PROD_LORE = "&c3倍生产速度";
 
     private DynaTechItems() {}
 
@@ -39,10 +43,7 @@ public class DynaTechItems {
     );
 
 
-    //RecipeTypes
-    // #TODO: Make Orechid use RecipeType + Standard Conversions
     public static final RecipeType DT_SCOOP = new RecipeType(new NamespacedKey(DynaTech.getInstance(), "DT_SCOOP"), new CustomItemStack(Material.IRON_SHOVEL, "&b使用勺子铲蜜蜂"));
-    //public static final RecipeType DT_ORECHID = new RecipeType(new NamespacedKey(DynaTech.getInstance(), "DT_ORECHID"), new CustomItem(Material.END_ROD, "&BTransmuted using the Orechid"));
 
     
     //General
@@ -72,9 +73,9 @@ public class DynaTechItems {
         "",
         "&f大小: &e27",
         "",
-        "&7ID: <ID>",
+        ID_LORE,
         "",
-        "&e右键点击&7打开"
+        RIGHT_CLICK_LORE
     );
 
     public static final SlimefunItemStack SOULBOUND_PICNIC_BASKET = new SlimefunItemStack("SOULBOUND_PICNIC_BASKET",
@@ -87,9 +88,9 @@ public class DynaTechItems {
         "",
         "&f大小: &e27",
         "",
-        "&7ID: <ID>",
+        ID_LORE,
         "",
-        "&e右键点击&7打开",
+        RIGHT_CLICK_LORE,
         "",
         "&d灵魂绑定"
     );
@@ -101,9 +102,9 @@ public class DynaTechItems {
         "&f如果捡起的物品已存在于过滤器中",
         "&f那么该物品就会被丢入虚空",
         "",
-        "&7ID: <ID>",
+        ID_LORE,
         "",
-        "&e右键点击&7打开"
+        RIGHT_CLICK_LORE
     );
 
     public static final SlimefunItemStack ELECTRICAL_STIMULATOR = new SlimefunItemStack("ELECTRICAL_STIMULATOR",
@@ -259,7 +260,7 @@ public class DynaTechItems {
         "",
         "&f&o就像一个小型温室",
         "",
-        "&c3倍生长速度",
+        THREE_X_PROD_LORE,
         LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
         LoreBuilder.speed(3),
         LoreBuilderDynamic.powerPerSecond(128)
@@ -282,7 +283,7 @@ public class DynaTechItems {
         "",
         "&f让&d紫颂花&f自动生长",
         "",
-        "&c3倍生长速度",
+        THREE_X_PROD_LORE,
         LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
         LoreBuilder.speed(3),
         LoreBuilderDynamic.powerPerSecond(128)
@@ -305,7 +306,7 @@ public class DynaTechItems {
         "",
         "&f让&c下界作物&f自动生长",
         "",
-        "&c3倍生长速度",
+        THREE_X_PROD_LORE,
         LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
         LoreBuilder.speed(3),
         LoreBuilderDynamic.powerPerSecond(128)
@@ -330,7 +331,7 @@ public class DynaTechItems {
         "&f让&9海洋植物&f自动生长",
         "&f&o可以复活失活的珊瑚!",
         "",
-        "&c3倍生长速度",
+        THREE_X_PROD_LORE,
         LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
         LoreBuilder.speed(3),
         LoreBuilderDynamic.powerPerSecond(128)

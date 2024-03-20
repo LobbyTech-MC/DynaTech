@@ -10,10 +10,10 @@ import com.google.common.base.Preconditions;
 
 import com.xzavier0722.mc.plugin.slimefun4.storage.controller.SlimefunBlockData;
 import com.xzavier0722.mc.plugin.slimefun4.storage.util.StorageCacheUtils;
-import io.github.bakedlibs.dough.blocks.BlockPosition;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.core.attributes.ItemAttribute;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.blocks.BlockPosition;
 import io.github.thebusybiscuit.slimefun4.utils.NumberUtils;
-import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.profelements.dynatech.DynaTech;
 
 /**
@@ -23,7 +23,6 @@ import me.profelements.dynatech.DynaTech;
  *
  */
 public interface LiquidStorage extends ItemAttribute {
-    
     int getLiquidCapacity();
 
     default boolean isFillable() {
@@ -38,7 +37,6 @@ public interface LiquidStorage extends ItemAttribute {
         return getLiquidAmount(l, StorageCacheUtils.getBlock(l.toLocation()));
     }
 
-    //TODO: Move from CSCorelib Config to Dough Config
     default int getLiquidAmount(@Nonnull BlockPosition l, SlimefunBlockData data) {
         Preconditions.checkNotNull(l, "Location was null");
         Preconditions.checkNotNull(data, "Config was null");
