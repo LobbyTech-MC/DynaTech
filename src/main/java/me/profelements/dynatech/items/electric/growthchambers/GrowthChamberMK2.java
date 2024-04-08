@@ -1,9 +1,11 @@
 package me.profelements.dynatech.items.electric.growthchambers;
 
+import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
@@ -96,7 +98,10 @@ public class GrowthChamberMK2 extends AbstractElectricMachine {
         registerRecipe(30, new ItemStack[] {new ItemStack(Material.JUNGLE_SAPLING)}, new ItemStack[] {new ItemStack(Material.JUNGLE_SAPLING, 9), new ItemStack(Material.JUNGLE_LOG, 18), new ItemStack(Material.APPLE, 6), new ItemStack(Material.JUNGLE_LEAVES, 9), new ItemStack(Material.STICK, 6)});
         registerRecipe(30, new ItemStack[] {new ItemStack(Material.ACACIA_SAPLING)}, new ItemStack[] {new ItemStack(Material.ACACIA_SAPLING, 9), new ItemStack(Material.ACACIA_LOG, 18), new ItemStack(Material.APPLE, 6), new ItemStack(Material.ACACIA_LEAVES, 9), new ItemStack(Material.STICK, 6)});
         registerRecipe(30, new ItemStack[] {new ItemStack(Material.MANGROVE_PROPAGULE)}, new ItemStack[] {new ItemStack(Material.MANGROVE_PROPAGULE, 9), new ItemStack(Material.MANGROVE_LOG, 18), new ItemStack(Material.MANGROVE_LEAVES, 9) });
-        registerRecipe(30, new ItemStack[] {new ItemStack(Material.CHERRY_SAPLING)}, new ItemStack[] {new ItemStack(Material.CHERRY_SAPLING, 9), new ItemStack(Material.CHERRY_LOG, 18), new ItemStack(Material.CHERRY_LEAVES, 9) }); 
+
+        if (Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_20)) {
+            registerRecipe(30, new ItemStack[] {new ItemStack(Material.CHERRY_SAPLING)}, new ItemStack[] {new ItemStack(Material.CHERRY_SAPLING, 9), new ItemStack(Material.CHERRY_LOG, 18), new ItemStack(Material.CHERRY_LEAVES, 9)});
+        }
     }
 
     @Override
