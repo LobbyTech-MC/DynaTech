@@ -121,9 +121,9 @@ public class DynaTechItems {
 
     // START Tools
     public static final SlimefunItemStack INV_FILTER = new SlimefunItemStack("DT_INVENTORY_FILTER",
-            Material.IRON_BARS, "&6Inventory Filter",
+            Material.IRON_BARS, "&6物品过滤器",
             "",
-            "&fFilters out items on the floor that are in it's inventory",
+            "&f过滤器中的物品将不会被捡起",
             "",
             ID_LORE,
             "",

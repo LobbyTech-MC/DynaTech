@@ -12,6 +12,7 @@ import me.profelements.dynatech.listeners.GastronomiconIntegrationListener;
 import me.profelements.dynatech.listeners.InventoryFilterListener;
 import me.profelements.dynatech.listeners.PicnicBasketListener;
 import me.profelements.dynatech.setup.DynaTechItemsSetup;
+import me.profelements.dynatech.tasks.InventoryFilterTask;
 import me.profelements.dynatech.tasks.ItemBandTask;
 import me.profelements.dynatech.utils.RecipeRegistry;
 
@@ -68,7 +69,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
         DynaTechItemsSetup.setup(this);
         new PicnicBasketListener(this, (PicnicBasket) DynaTechItems.PICNIC_BASKET.getItem());
         new ElectricalStimulatorListener(this, (ElectricalStimulator) DynaTechItems.ELECTRICAL_STIMULATOR.getItem());
-//        new InventoryFilterListener(this);
+        new InventoryFilterListener(this);
 
         try {
             Class.forName("io.github.schntgaispock.gastronomicon.api.items.FoodItemStack");
@@ -84,6 +85,7 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
         }
 
         // Tasks
+        getServer().getScheduler().runTaskTimerAsynchronously(DynaTech.getInstance(), new InventoryFilterTask(), 0L, 5 * 20L);
         getServer().getScheduler().runTaskTimerAsynchronously(DynaTech.getInstance(), new ItemBandTask(), 0L, 5 * 20L);
         getServer().getScheduler().runTaskTimer(DynaTech.getInstance(), () -> this.tickInterval++, 0, TICK_TIME);
 
