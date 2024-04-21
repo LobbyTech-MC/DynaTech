@@ -21,7 +21,9 @@ public class InventoryFilterTask implements Runnable {
     public void run() {
         for (Player p : Bukkit.getOnlinePlayers()) {
             var sfItems = SF_ITEMS.computeIfAbsent(p.getUniqueId(), k -> new HashSet<>());
+            sfItems.clear();
             var otherItems = OTHER_ITEMS.computeIfAbsent(p.getUniqueId(), k -> new HashSet<>());
+            otherItems.clear();
 
             for (ItemStack filterItem : p.getInventory().getContents()) {
                 if (SlimefunItem.getByItem(filterItem) instanceof InventoryFilter) {
