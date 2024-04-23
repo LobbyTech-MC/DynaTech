@@ -160,9 +160,9 @@ public class DynaTechRecipes {
                 .setInput(new ItemStack[] {
                         DynaTechItems.STAINLESS_STEEL_INGOT, DynaTechItems.STONE_MACHINE_CORE,
                         DynaTechItems.STAINLESS_STEEL_INGOT,
-                        DynaTechItems.STAINLESS_STEEL_ROTOR_1, DynaTechItems.WATER_MILL,
+                        DynaTechItems.STAINLESS_STEEL_ROTOR_1, DynaTechItems.WATER_MILL_1,
                         DynaTechItems.STAINLESS_STEEL_ROTOR_1,
-                        DynaTechItems.STAINLESS_STEEL_INGOT, DynaTechItems.WATER_MILL,
+                        DynaTechItems.STAINLESS_STEEL_INGOT, DynaTechItems.WATER_MILL_1,
                         DynaTechItems.STAINLESS_STEEL_INGOT,
                 })
                 .setOutput(DynaTechItems.WATER_MILL_2)
@@ -179,6 +179,58 @@ public class DynaTechRecipes {
                         DynaTechItems.STAINLESS_STEEL_ROTOR_1,
                 })
                 .setOutput(DynaTechItems.WATER_MILL_2)
+                .register(registry);
+
+        // Wind Mill Level 1
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "wind_mill_1"))
+                .setRecipeType(RecipeType.ENHANCED_CRAFTING_TABLE)
+                .setInput(new ItemStack[] {
+                        null, DynaTechItems.STAINLESS_STEEL_ROTOR_1, null,
+                        DynaTechItems.STAINLESS_STEEL_ROTOR_1, DynaTechItems.WOOD_MACHINE_CORE,
+                        DynaTechItems.STAINLESS_STEEL_ROTOR_1,
+                        DynaTechItems.ENERGY_STORAGE_COMPONENT, DynaTechItems.STAINLESS_STEEL_ROTOR_1,
+                        DynaTechItems.ENERGY_OUTPUT_COMPONENT,
+                })
+                .setOutput(DynaTechItems.WIND_MILL_1)
+                .register(registry);
+
+        // Wind Mill Level 1 Repair
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "wind_mill_1_repair"))
+                .setRecipeType(RecipeType.ENHANCED_CRAFTING_TABLE)
+                .setInput(new ItemStack[] {
+                        null, IRON_INGOT,
+                        IRON_INGOT, DynaTechItems.DEGRADED_WIND_MILL, IRON_INGOT,
+                        IRON_BLOCK, IRON_INGOT, IRON_BLOCK
+                })
+                .setOutput(DynaTechItems.WIND_MILL_1)
+                .register(registry);
+
+        // Wind Mill Level 2
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "wind_mill_2"))
+                .setRecipeType(RecipeType.ENHANCED_CRAFTING_TABLE)
+                .setInput(new ItemStack[] {
+                        null, DynaTechItems.STAINLESS_STEEL_ROTOR_1, null,
+                        DynaTechItems.STAINLESS_STEEL_ROTOR_1, DynaTechItems.STONE_MACHINE_CORE,
+                        DynaTechItems.STAINLESS_STEEL_ROTOR_1,
+                        DynaTechItems.WIND_MILL_1, DynaTechItems.STAINLESS_STEEL_ROTOR_1,
+                        DynaTechItems.WIND_MILL_1,
+                })
+                .setOutput(DynaTechItems.WIND_MILL_2)
+                .register(registry);
+
+        // Wind Mill Level 2 Repair
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "wind_mill_2_repair"))
+                .setRecipeType(RecipeType.ENHANCED_CRAFTING_TABLE)
+                .setInput(new ItemStack[] {
+                        null, IRON_INGOT,
+                        IRON_INGOT, DynaTechItems.DEGRADED_WIND_MILL_2, IRON_INGOT,
+                        IRON_BLOCK, IRON_INGOT, IRON_BLOCK
+                })
+                .setOutput(DynaTechItems.WIND_MILL_2)
                 .register(registry);
 
         // END Energy Generators

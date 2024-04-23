@@ -89,6 +89,12 @@ public class DynaTechItems {
     public static final SlimefunItemStack DEGRADED_WATER_MILL_2 = new SlimefunItemStack("DT_WATER_MILL_2_DEGRADED",
             Material.PRISMARINE_WALL, "&c破损的水力涡轮发电机");
 
+    public static final SlimefunItemStack DEGRADED_WIND_MILL = new SlimefunItemStack("DT_WIND_MILL_DEGRADED",
+            Material.LIGHT_GRAY_GLAZED_TERRACOTTA, "&cDegraded Wind Mill");
+
+    public static final SlimefunItemStack DEGRADED_WIND_MILL_2 = new SlimefunItemStack("DT_WIND_MILL_2_DEGRADED",
+            Material.GRAY_GLAZED_TERRACOTTA, "&cDegraded Wind Turbine");
+
     // END Mechanical Components
 
     // START Energy Generators
@@ -108,6 +114,24 @@ public class DynaTechItems {
             "&7将在使用一段时间后破损。",
             LoreBuilder.powerBuffer(256),
             LoreBuilderDynamic.powerPerSecond(64));
+
+    public static final SlimefunItemStack WIND_MILL_1 = new SlimefunItemStack("DT_WIND_MILL",
+            Material.LIGHT_GRAY_GLAZED_TERRACOTTA,
+            "&bWind Mill",
+            "",
+            "&7Degrades over time.",
+            "&fMinimum Energy Generation Rate: &b16j/tick",
+            "&fMaximum Energy Generation Rate: &b64j/tick",
+            "&fEnergy Capacity: &b256j");
+
+    public static final SlimefunItemStack WIND_MILL_2 = new SlimefunItemStack("DT_WIND_MILL_2",
+            Material.GRAY_GLAZED_TERRACOTTA,
+            "&bWind Turbine",
+            "",
+            "&7Degrades over time.",
+            "&fMinimum Energy Generation Rate: &b64j/tick",
+            "&fMaximum Energy Generation Rate: &b256j/tick",
+            "&fEnergy Capacity: &b1024j");
 
     // END Energy Generators
 
