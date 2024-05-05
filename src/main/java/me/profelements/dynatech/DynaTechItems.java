@@ -84,29 +84,29 @@ public class DynaTechItems {
             Material.REPEATER, "&c电力输出组件");
 
     public static final SlimefunItemStack DEGRADED_WATER_MILL = new SlimefunItemStack("DT_WATER_MILL_DEGRADED",
-            Material.COBBLESTONE_WALL, "&c破损的水轮发电机");
+            Material.COBBLESTONE_WALL, "&c破损的水力发电机");
 
     public static final SlimefunItemStack DEGRADED_WATER_MILL_2 = new SlimefunItemStack("DT_WATER_MILL_2_DEGRADED",
             Material.PRISMARINE_WALL, "&c破损的水力涡轮发电机");
 
     public static final SlimefunItemStack DEGRADED_WIND_MILL = new SlimefunItemStack("DT_WIND_MILL_DEGRADED",
-            Material.LIGHT_GRAY_GLAZED_TERRACOTTA, "&c破损的风车");
+            Material.LIGHT_GRAY_GLAZED_TERRACOTTA, "&c破损的风力发电机");
 
     public static final SlimefunItemStack DEGRADED_WIND_MILL_2 = new SlimefunItemStack("DT_WIND_MILL_2_DEGRADED",
-            Material.GRAY_GLAZED_TERRACOTTA, "&c破损的风力发电机");
+            Material.GRAY_GLAZED_TERRACOTTA, "&c破损的风力涡轮发电机");
 
     public static final SlimefunItemStack DEGRADED_EGG_MILL = new SlimefunItemStack("DT_EGG_MILL_DEGRADED",
-            Material.CRYING_OBSIDIAN, "&cDegraded Dragon Egg Mill");
+            Material.CRYING_OBSIDIAN, "&c破损的龙蛋发电机");
 
     public static final SlimefunItemStack DEGRADED_EGG_MILL_2 = new SlimefunItemStack("DT_EGG_MILL_2_DEGRADED",
-            Material.RESPAWN_ANCHOR, "&cDegraded Dragon Egg Turbine");
+            Material.RESPAWN_ANCHOR, "&c破损的龙蛋涡轮发电机");
     // END Mechanical Components
 
     // START Energy Generators
 
     public static final SlimefunItemStack WATER_MILL_1 = new SlimefunItemStack("DT_WATER_MILL",
             Material.COBBLESTONE_WALL,
-            "&b水轮发电机",
+            "&b水力发电机",
             "",
             "&7将在使用一段时间后破损。",
             LoreBuilder.powerBuffer(64),
@@ -122,37 +122,37 @@ public class DynaTechItems {
 
     public static final SlimefunItemStack WIND_MILL_1 = new SlimefunItemStack("DT_WIND_MILL",
             Material.LIGHT_GRAY_GLAZED_TERRACOTTA,
-            "&b风车",
-            "",
-            "&7将在使用一段时间后破损。",
-            LoreBuilder.powerBuffer(256),
-            "&f最小发电效率: &b16j/tick",
-            "&f最大发电效率: &b64j/tick");
-
-    public static final SlimefunItemStack WIND_MILL_2 = new SlimefunItemStack("DT_WIND_MILL_2",
-            Material.GRAY_GLAZED_TERRACOTTA,
             "&b风力发电机",
             "",
             "&7将在使用一段时间后破损。",
+            LoreBuilder.powerBuffer(256),
+            "&f最小发电功率: &b16j/tick",
+            "&f最大发电功率: &b64j/tick");
+
+    public static final SlimefunItemStack WIND_MILL_2 = new SlimefunItemStack("DT_WIND_MILL_2",
+            Material.GRAY_GLAZED_TERRACOTTA,
+            "&b风力涡轮发电机",
+            "",
+            "&7将在使用一段时间后破损。",
             LoreBuilder.powerBuffer(1024),
-            "&f最小发电效率: &b64j/tick",
-            "&f最大发电效率: &b256j/tick");
+            "&f最小发电功率: &b64j/tick",
+            "&f最大发电功率: &b256j/tick");
 
     public static final SlimefunItemStack EGG_MILL_1 = new SlimefunItemStack("DT_EGG_MILL",
             Material.CRYING_OBSIDIAN,
-            "&bDragon Egg Mill",
+            "&b龙蛋发电机",
             "",
-            "&7Degrades over time.",
-            "&fEnergy Generation Rate: &b16j/t",
-            "&fEnergy Capacity: &b64j");
+            "&7将在使用一段时间后破损。",
+            LoreBuilder.powerBuffer(64),
+            LoreBuilderDynamic.powerPerSecond(16));
 
     public static final SlimefunItemStack EGG_MILL_2 = new SlimefunItemStack("DT_EGG_MILL_2",
             Material.RESPAWN_ANCHOR,
-            "&bDragon Egg Turbine",
+            "&b龙蛋涡轮发电机",
             "",
-            "&7Degrades over time.",
-            "&fEnergy Generation Rate: &b64j/t",
-            "&fEnergy Capacity: &b256j");
+            "&7将在使用一段时间后破损。",
+            LoreBuilder.powerBuffer(256),
+            LoreBuilderDynamic.powerPerSecond(64));
     // END Energy Generators
 
     // START Materials
@@ -367,8 +367,8 @@ public class DynaTechItems {
             "&f自动合成&e厨房&f配方",
             "",
             "&f&o闻起来像饼干一样",
-        "",
-        "&4&l已弃用，请使用&6厨房自动合成机",
+            "",
+            "&4&l已弃用，请使用&6厨房自动合成机",
             "",
             LoreBuilder.machine(MachineTier.MEDIUM, MachineType.MACHINE),
             LoreBuilder.speed(1),

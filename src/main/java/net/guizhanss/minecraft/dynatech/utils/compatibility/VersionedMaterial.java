@@ -1,15 +1,15 @@
-package net.guizhanss.minecraft.dynatech.backwardcompat;
+package net.guizhanss.minecraft.dynatech.utils.compatibility;
 
 import org.bukkit.Material;
 
 import javax.annotation.Nonnull;
 
-public enum BCMaterial {
+public enum VersionedMaterial {
     GRASS(Material.getMaterial("SHORT_GRASS"), Material.getMaterial("GRASS"));
 
     private final Material material;
 
-    BCMaterial(Material... materials) {
+    VersionedMaterial(Material... materials) {
         for (Material mat : materials) {
             if (mat != null) {
                 this.material = mat;

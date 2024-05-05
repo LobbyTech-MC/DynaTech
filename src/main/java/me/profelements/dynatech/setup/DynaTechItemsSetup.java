@@ -220,14 +220,14 @@ public class DynaTechItemsSetup {
                         new ItemStack(Material.CRYING_OBSIDIAN)
                 }).register(plugin);
 
-//        new InventoryFilter(DynaTechItems.DT_TOOLS, DynaTechItems.INVENTORY_FILTER, RecipeType.ENHANCED_CRAFTING_TABLE,
-//                new ItemStack[] {
-//                        SlimefunItems.REINFORCED_CLOTH, new ItemStack(Material.IRON_BARS),
-//                        SlimefunItems.REINFORCED_CLOTH,
-//                        new ItemStack(Material.IRON_BARS), null, new ItemStack(Material.IRON_BARS),
-//                        SlimefunItems.REINFORCED_CLOTH, new ItemStack(Material.IRON_BARS),
-//                        SlimefunItems.REINFORCED_CLOTH
-//                }).register(plugin);
+        new InventoryFilter(DynaTechItems.DT_TOOLS, DynaTechItems.INVENTORY_FILTER, RecipeType.ENHANCED_CRAFTING_TABLE,
+                new ItemStack[] {
+                        SlimefunItems.REINFORCED_CLOTH, new ItemStack(Material.IRON_BARS),
+                        SlimefunItems.REINFORCED_CLOTH,
+                        new ItemStack(Material.IRON_BARS), null, new ItemStack(Material.IRON_BARS),
+                        SlimefunItems.REINFORCED_CLOTH, new ItemStack(Material.IRON_BARS),
+                        SlimefunItems.REINFORCED_CLOTH
+                }).register(plugin);
 
         new ElectricalStimulator(DynaTechItems.DT_TOOLS, DynaTechItems.ELECTRICAL_STIMULATOR,
                 RecipeType.ENHANCED_CRAFTING_TABLE,

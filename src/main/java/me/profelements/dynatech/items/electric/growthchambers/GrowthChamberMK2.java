@@ -13,7 +13,7 @@ import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.profelements.dynatech.items.abstracts.AbstractElectricMachine;
-import net.guizhanss.minecraft.dynatech.backwardcompat.BCMaterial;
+import net.guizhanss.minecraft.dynatech.utils.compatibility.VersionedMaterial;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -59,7 +59,7 @@ public class GrowthChamberMK2 extends AbstractElectricMachine {
         registerRecipe(9, new ItemStack(Material.BROWN_MUSHROOM), new ItemStack(Material.BROWN_MUSHROOM, 9));
         registerRecipe(9, new ItemStack(Material.RED_MUSHROOM), new ItemStack(Material.RED_MUSHROOM, 9));
         registerRecipe(9, new ItemStack[] {new ItemStack(Material.DEAD_BUSH)}, new ItemStack[] {new ItemStack(Material.DEAD_BUSH , 9), new ItemStack(Material.STICK, 6)});
-        registerRecipe(9, new ItemStack(BCMaterial.GRASS.get()), new ItemStack(BCMaterial.GRASS.get(), 9));
+        registerRecipe(9, new ItemStack(VersionedMaterial.GRASS.get()), new ItemStack(VersionedMaterial.GRASS.get(), 9));
         registerRecipe(12, new ItemStack(Material.TALL_GRASS), new ItemStack(Material.TALL_GRASS, 9));
         registerRecipe(9, new ItemStack(Material.FERN), new ItemStack(Material.FERN, 9));
         registerRecipe(12, new ItemStack(Material.LARGE_FERN), new ItemStack(Material.LARGE_FERN, 9));
