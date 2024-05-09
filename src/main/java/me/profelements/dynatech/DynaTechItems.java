@@ -182,7 +182,7 @@ public class DynaTechItems {
             RIGHT_CLICK_LORE);
 
     public static final SlimefunItemStack RECIPE_BOOK = new SlimefunItemStack("DT_RECIPE_BOOK", Material.BOOK,
-            "&6Recipe Book");
+            "&6配方书");
     // END Tools
 
     // General

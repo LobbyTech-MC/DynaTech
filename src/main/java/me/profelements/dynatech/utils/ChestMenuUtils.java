@@ -20,7 +20,7 @@ public class ChestMenuUtils {
             .getEmptyClickHandler();
 
     public static void openRecipeBook(Player p) {
-        ChestMenu menu = new ChestMenu("Recipe Book");
+        ChestMenu menu = new ChestMenu("配方书");
         menu.setEmptySlotsClickable(false);
 
         for (int i = 0; i < 9; i++) {
@@ -55,7 +55,7 @@ public class ChestMenuUtils {
     }
 
     private static void openRecipeWithItem(Player p, ItemStack item, int idx) {
-        ChestMenu menu = new ChestMenu("Recipe");
+        ChestMenu menu = new ChestMenu("配方");
         menu.setEmptySlotsClickable(false);
 
         menu.addItem(0, io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils.getBackButton(p, ""),
