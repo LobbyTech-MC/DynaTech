@@ -33,6 +33,7 @@ public class DynaTechRecipes {
     private static final ItemStack IRON_BARS = new ItemStack(Material.IRON_BARS);
     private static final ItemStack END_STONE = new ItemStack(Material.END_STONE);
     private static final ItemStack CHORUS_FRUIT = new ItemStack(Material.CHORUS_FRUIT);
+    private static final ItemStack BOOK = new ItemStack(Material.BOOK);
     // END common use items
 
     private DynaTechRecipes() {
@@ -123,6 +124,54 @@ public class DynaTechRecipes {
                 .setOutput(DynaTechItems.ENERGY_OUTPUT_COMPONENT)
                 .register(registry);
 
+        // Degraded Wind Mill
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "degraded_wind_mill"))
+                .setRecipeType(DynaTechItems.DT_BLOCK_DROP)
+                .setInput(new ItemStack[] { DynaTechItems.WIND_MILL_1 })
+                .setOutput(DynaTechItems.DEGRADED_WIND_MILL)
+                .register(registry);
+
+        // Degraded Wind Mill 2
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "degraded_wind_mill_2"))
+                .setRecipeType(DynaTechItems.DT_BLOCK_DROP)
+                .setInput(new ItemStack[] { DynaTechItems.WIND_MILL_2 })
+                .setOutput(DynaTechItems.DEGRADED_WIND_MILL_2)
+                .register(registry);
+
+        // Degraded Hydro Mill
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "degraded_water_mill"))
+                .setRecipeType(DynaTechItems.DT_BLOCK_DROP)
+                .setInput(new ItemStack[] { DynaTechItems.WATER_MILL_1 })
+                .setOutput(DynaTechItems.DEGRADED_WATER_MILL)
+                .register(registry);
+
+        // Degraded Hydro Mill 2
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "degraded_water_mill_2"))
+                .setRecipeType(DynaTechItems.DT_BLOCK_DROP)
+                .setInput(new ItemStack[] { DynaTechItems.WATER_MILL_2 })
+                .setOutput(DynaTechItems.DEGRADED_WATER_MILL_2)
+                .register(registry);
+
+        // Degraded Egg Mill
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "degraded_egg_mill"))
+                .setRecipeType(DynaTechItems.DT_BLOCK_DROP)
+                .setInput(new ItemStack[] { DynaTechItems.EGG_MILL_1 })
+                .setOutput(DynaTechItems.DEGRADED_EGG_MILL)
+                .register(registry);
+
+        // Degraded Egg Mill 2
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "degraded_egg_mill_2"))
+                .setRecipeType(DynaTechItems.DT_BLOCK_DROP)
+                .setInput(new ItemStack[] { DynaTechItems.EGG_MILL_2 })
+                .setOutput(DynaTechItems.DEGRADED_EGG_MILL_2)
+                .register(registry);
+
         // END Mechanical Components
 
         // Start Generators
@@ -202,7 +251,7 @@ public class DynaTechRecipes {
                 .setKey(new NamespacedKey(DynaTech.getInstance(), "wind_mill_1_repair"))
                 .setRecipeType(RecipeType.ENHANCED_CRAFTING_TABLE)
                 .setInput(new ItemStack[] {
-                        null, IRON_INGOT,
+                        null, IRON_INGOT, null,
                         IRON_INGOT, DynaTechItems.DEGRADED_WIND_MILL, IRON_INGOT,
                         IRON_BLOCK, IRON_INGOT, IRON_BLOCK
                 })
@@ -228,7 +277,7 @@ public class DynaTechRecipes {
                 .setKey(new NamespacedKey(DynaTech.getInstance(), "wind_mill_2_repair"))
                 .setRecipeType(RecipeType.ENHANCED_CRAFTING_TABLE)
                 .setInput(new ItemStack[] {
-                        null, IRON_INGOT,
+                        null, IRON_INGOT, null,
                         IRON_INGOT, DynaTechItems.DEGRADED_WIND_MILL_2, IRON_INGOT,
                         IRON_BLOCK, IRON_INGOT, IRON_BLOCK
                 })
@@ -323,6 +372,16 @@ public class DynaTechRecipes {
                 }).setOutput(DynaTechItems.INV_FILTER)
                 .register(registry);
 
+        Recipe.init()
+                .setKey(new NamespacedKey(DynaTech.getInstance(), "recipe_book"))
+                .setRecipeType(RecipeType.ENHANCED_CRAFTING_TABLE)
+                .setInput(new ItemStack[] {
+                        null, DynaTechItems.STAINLESS_STEEL_INGOT, null,
+                        DynaTechItems.STAINLESS_STEEL_INGOT, BOOK, DynaTechItems.STAINLESS_STEEL_INGOT,
+                        null, DynaTechItems.STAINLESS_STEEL_INGOT, null,
+                })
+                .setOutput(DynaTechItems.RECIPE_BOOK)
+                .register(registry);
         // END Tools
     }
 
