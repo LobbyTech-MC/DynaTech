@@ -184,7 +184,7 @@ public class DynaTechItems {
     // Lava Bottle
     public static final SlimefunItemStack LAVA_BOTTLE = new SlimefunItemStack("DT_LAVA_BOTTLE",
             Material.POTION,
-            "&fLava Bottle",
+            "&f岩浆瓶",
             meta -> {
                 if (meta instanceof PotionMeta p) {
                     p.setColor(Color.ORANGE);
@@ -199,20 +199,20 @@ public class DynaTechItems {
     // Honey
     // Honey Bucket
     public static final SlimefunItemStack HONEY_BUCKET = new SlimefunItemStack("DT_HONEY_BUCKET", Material.LAVA_BUCKET,
-            "&fHoney Bucket");
+            "&f蜂蜜桶");
     // Honey Bottle
 
     // Potion
     // Potion Bucket
     public static final SlimefunItemStack POTION_BUCKET = new SlimefunItemStack("DT_POTION_BUCKET",
-            Material.WATER_BUCKET, "&fPotion Bucket");
+            Material.WATER_BUCKET, "&f药水桶");
     // Potion Bottle
 
     // Milk
     // Milk Bucket
     // Milk Bottle
     public static final SlimefunItemStack MILK_BOTTLE = new SlimefunItemStack("DT_MILK_BOTTLE", Material.POTION,
-            "&fMilk Bottle", meta -> {
+            "&f牛奶瓶", meta -> {
                 if (meta instanceof PotionMeta p) {
                     p.setColor(Color.WHITE);
                     p.setBasePotionType(PotionType.WATER);
