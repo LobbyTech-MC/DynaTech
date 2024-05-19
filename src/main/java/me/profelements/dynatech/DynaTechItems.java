@@ -22,6 +22,7 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
+import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionType;
 
 public class DynaTechItems {
@@ -188,7 +189,7 @@ public class DynaTechItems {
             meta -> {
                 if (meta instanceof PotionMeta p) {
                     p.setColor(Color.ORANGE);
-                    p.setBasePotionType(PotionType.WATER);
+                    p.setBasePotionData(new PotionData(PotionType.WATER));
                 }
             });
 
@@ -215,7 +216,7 @@ public class DynaTechItems {
             "&f牛奶瓶", meta -> {
                 if (meta instanceof PotionMeta p) {
                     p.setColor(Color.WHITE);
-                    p.setBasePotionType(PotionType.WATER);
+                    p.setBasePotionData(new PotionData(PotionType.WATER));
                 }
             });
 
