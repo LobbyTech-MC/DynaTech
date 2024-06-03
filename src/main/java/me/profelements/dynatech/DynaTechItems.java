@@ -67,7 +67,11 @@ public class DynaTechItems {
 
     public static final RecipeType DT_BLOCK_DROP = new RecipeType(
             new NamespacedKey(DynaTech.getInstance(), "DT_BLOCK_DROP"),
-            new CustomItemStack(Material.COBWEB, "&bDrops from a block"));
+            new CustomItemStack(Material.COBWEB, "&b来自方块掉落"));
+
+    public static final RecipeType DT_TREE_GROWTH_CHAMBER = new RecipeType(
+            new NamespacedKey(DynaTech.getInstance(), "tree_growth_chamber"),
+            new CustomItemStack(Material.LIME_TERRACOTTA, "&f在培育仓中使用"));
 
     // END Recipe Types
 
@@ -232,7 +236,13 @@ public class DynaTechItems {
             RIGHT_CLICK_LORE);
 
     public static final SlimefunItemStack RECIPE_BOOK = new SlimefunItemStack("DT_RECIPE_BOOK", Material.BOOK,
-            "&6配方书");
+            "&6动力科技配方书");
+
+    public static final SlimefunItemStack AUTO_OUTPUT_UPGRADE = new SlimefunItemStack("DT_AUTO_OUTPUT_UPGRADE",
+            Material.RED_STAINED_GLASS_PANE, "&6自动输出升级");
+
+    public static final SlimefunItemStack AUTO_INPUT_UPGRADE = new SlimefunItemStack("DT_AUTO_INPUT_UPGRADE",
+            Material.BLUE_STAINED_GLASS_PANE, "&6自动输入升级");
     // END Tools
 
     // General
