@@ -15,7 +15,6 @@ import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import me.profelements.dynatech.items.electric.MaterialHive;
-import me.profelements.dynatech.utils.LiquidRegistry;
 
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -245,13 +244,22 @@ public class DynaTechItems {
             Material.BLUE_STAINED_GLASS_PANE, "&6自动输入升级");
     // END Tools
 
+    // START Machines
+    public static final SlimefunItemStack COKE_OVEN_CONTROLLER = new SlimefunItemStack("DT_COKE_OVEN_CONTROLLER",
+            Material.SMOKER, "&f焦炉控制器");
+
     // General
 
     // Resources
-    public static final SlimefunItemStack STAINLESS_STEEL = new SlimefunItemStack("STAINLESS_STEEL",
-            Material.IRON_INGOT, "&6不锈钢锭");
-    public static final SlimefunItemStack STAINLESS_STEEL_ROTOR = new SlimefunItemStack("STAINLESS_STEEL_ROTOR",
-            Material.IRON_BLOCK, "&6不锈钢转子");
+    /*
+     * public static final SlimefunItemStack STAINLESS_STEEL = new
+     * SlimefunItemStack("STAINLESS_STEEL",
+     * Material.IRON_INGOT, "&6不锈钢锭");
+     *
+     * public static final SlimefunItemStack STAINLESS_STEEL_ROTOR = new
+     * SlimefunItemStack("STAINLESS_STEEL_ROTOR",
+     * Material.IRON_BLOCK, "&6不锈钢转子");
+     */
     public static final SlimefunItemStack ANCIENT_MACHINE_CORE = new SlimefunItemStack("ANCIENT_MACHINE_CORE",
             Material.LAPIS_BLOCK, "&6古代机器核心");
     public static final SlimefunItemStack VEX_GEM = new SlimefunItemStack("VEX_GEM",

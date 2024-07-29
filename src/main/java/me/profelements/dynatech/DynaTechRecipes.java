@@ -98,7 +98,7 @@ public class DynaTechRecipes {
                 .setInput(new ItemStack[] { SlimefunItems.REDSTONE_ALLOY, GLASS, SlimefunItems.REDSTONE_ALLOY, GLASS,
                         SlimefunItems.BATTERY, GLASS, DynaTechItems.STAINLESS_STEEL_INGOT,
                         DynaTechItems.IRON_MACHINE_CORE,
-                        DynaTechItems.STAINLESS_STEEL })
+                        DynaTechItems.STAINLESS_STEEL_INGOT })
                 .setOutput(DynaTechItems.ENERGY_STORAGE_COMPONENT)
                 .register(registry);
 
@@ -407,6 +407,9 @@ public class DynaTechRecipes {
                 .setOutput(DynaTechItems.AUTO_INPUT_UPGRADE)
                 .register(registry);
         // END Tools
+
+        // START Machines
+        // END Machines
 
         // START Tree Growth Chamber Recipes
         // OAK, BIRCH, SPRUCE, DARK_OAK, MANGROVE, CHERRY, JUNGLE, ACAICA, AZALEA
