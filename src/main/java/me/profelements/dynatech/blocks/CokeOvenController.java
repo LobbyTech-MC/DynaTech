@@ -35,7 +35,7 @@ public class CokeOvenController extends SlimefunItem {
             public void onRightClick(PlayerRightClickEvent event) {
                 event.getPlayer().closeInventory();
                 if (validateMultiblock(event.getClickedBlock().get(), event.getPlayer().getFacing())) {
-                    event.getPlayer().sendMessage("Touched the Beacon");
+                    event.getPlayer().sendMessage("已接触信标");
                 }
 
             }
