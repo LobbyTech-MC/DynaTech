@@ -1,7 +1,7 @@
 version: "1"
 rules:
   - base: master
-    upstream: ProfElements:master
+    upstream: ProfElements:main
     mergeMethod: merge
     assignees:
       - ybw0014
