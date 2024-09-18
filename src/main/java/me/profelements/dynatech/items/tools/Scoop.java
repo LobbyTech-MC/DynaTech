@@ -9,7 +9,8 @@ import io.github.thebusybiscuit.slimefun4.core.attributes.Rechargeable;
 import io.github.thebusybiscuit.slimefun4.core.handlers.EntityInteractHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
-import me.profelements.dynatech.DynaTechItems;
+import me.profelements.dynatech.registries.Items;
+
 import org.bukkit.Sound;
 import org.bukkit.entity.Bee;
 import org.bukkit.entity.Entity;
@@ -32,7 +33,8 @@ public class Scoop extends SlimefunItem implements Rechargeable, NotPlaceable {
 
             Entity entity = e.getRightClicked();
 
-            if (e.isCancelled() || !Slimefun.getProtectionManager().hasPermission(e.getPlayer(), entity.getLocation(), Interaction.INTERACT_ENTITY)) {
+            if (e.isCancelled() || !Slimefun.getProtectionManager().hasPermission(e.getPlayer(), entity.getLocation(),
+                    Interaction.INTERACT_ENTITY)) {
                 return;
             }
 
@@ -40,7 +42,7 @@ public class Scoop extends SlimefunItem implements Rechargeable, NotPlaceable {
 
             if (entity instanceof Bee) {
 
-                entity.getWorld().dropItemNaturally(entity.getLocation(), DynaTechItems.BEE);
+                entity.getWorld().dropItemNaturally(entity.getLocation(), Items.BEE.stack());
                 entity.remove();
                 removeItemCharge(item, 8);
 

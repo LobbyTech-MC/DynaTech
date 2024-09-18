@@ -6,6 +6,8 @@ import org.bukkit.inventory.ItemStack;
 import com.google.common.base.Preconditions;
 
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import me.profelements.dynatech.registries.Registries;
+import me.profelements.dynatech.registries.TypedKey;
 
 public class Recipe {
     private NamespacedKey KEY;
@@ -66,6 +68,14 @@ public class Recipe {
         return getInstance();
     }
 
+    public Recipe setOutput(ItemStack output, int amount) {
+        Preconditions.checkNotNull(output, "This recipe's output should not be null");
+        var actualOutput = output.clone();
+        actualOutput.setAmount(amount);
+        this.OUTPUT = new ItemStack[] { actualOutput };
+        return getInstance();
+    }
+
     public Recipe setOutput(ItemStack[] output) {
         Preconditions.checkNotNull(output, "This recipe's output should not be null");
         this.OUTPUT = output;
@@ -89,10 +99,11 @@ public class Recipe {
         return getInstance();
     }
 
-    public void register(RecipeRegistry registry) {
+    public Recipe register() {
         Recipe res = this.build();
         res.getRecipeType().register(res.getInput(), res.getOutput()[0]);
-        registry.addRecipe(res);
+        Registries.RECIPES.register(TypedKey.create(res.getKey()), res);
+        return res;
     }
 
 }

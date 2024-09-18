@@ -1,6 +1,5 @@
 package me.profelements.dynatech.items.tools;
 
-
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
@@ -14,7 +13,7 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.Persis
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import me.profelements.dynatech.DynaTech;
-import me.profelements.dynatech.DynaTechItems;
+import me.profelements.dynatech.registries.Items;
 import net.guizhanss.minecraft.dynatech.utils.FluidUtils;
 
 import org.bukkit.Bukkit;
@@ -41,7 +40,8 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable, Listener {
 
     private final int maxLiquidAmount;
 
-    public LiquidTank(ItemGroup itemGroup, SlimefunItemStack item, int maxLiquidAmount, RecipeType recipeType, ItemStack[] recipe) {
+    public LiquidTank(ItemGroup itemGroup, SlimefunItemStack item, int maxLiquidAmount, RecipeType recipeType,
+            ItemStack[] recipe) {
         super(itemGroup, item, recipeType, recipe);
 
         this.maxLiquidAmount = maxLiquidAmount;
@@ -53,17 +53,21 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable, Listener {
 
     private final EntityInteractHandler onEntityClick() {
         return (e, item, something) -> {
-            if ((e.getRightClicked().getType() == EntityType.COW || e.getRightClicked().getType() == EntityType.MUSHROOM_COW) && SlimefunUtils.isItemSimilar(item, DynaTechItems.LIQUID_TANK, true)) {
+            if ((e.getRightClicked().getType() == EntityType.COW
+                    || e.getRightClicked().getType() == EntityType.MOOSHROOM)
+                    && SlimefunUtils.isItemSimilar(item, Items.LIQUID_TANK.stack(), true)) {
                 e.setCancelled(true);
             }
         };
     }
+
     @EventHandler
     private void onBucketChange(PlayerBucketFillEvent e) {
         ItemStack item = e.getPlayer().getEquipment().getItem(e.getHand());
-        if (this.isItem(item) && this.canUse(e.getPlayer(), true) && SlimefunItem.getByItem(item) instanceof LiquidTank tank) {
+        if (this.isItem(item) && this.canUse(e.getPlayer(), true)
+                && SlimefunItem.getByItem(item) instanceof LiquidTank tank) {
             e.setCancelled(true);
-            //Check if block == LAVA or WATER
+            // Check if block == LAVA or WATER
             String fluidName = PersistentDataAPI.getString(item.getItemMeta(), FLUID_NAME, "NO_LIQUID");
             int fluidAmount = PersistentDataAPI.getInt(item.getItemMeta(), FLUID_AMOUNT, 0);
             Block block = e.getBlock();
@@ -100,16 +104,20 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable, Listener {
 
     private final ItemUseHandler onRightClick() {
         return e -> {
-            if (e.getPlayer().isSneaking() && e.getClickedBlock().isPresent() && !e.getClickedBlock().get().isLiquid()) {
+            if (e.getPlayer().isSneaking() && e.getClickedBlock().isPresent()
+                    && !e.getClickedBlock().get().isLiquid()) {
                 ItemStack item = e.getItem();
                 String fluidName = PersistentDataAPI.getString(item.getItemMeta(), FLUID_NAME, "NO_LIQUID");
                 int fluidAmount = PersistentDataAPI.getInt(item.getItemMeta(), FLUID_AMOUNT, 0);
-                if (this.canUse(e.getPlayer(), true) && this.isItem(item) && !fluidName.equals("NO_LIQUID") && fluidAmount >= 1000) {
+                if (this.canUse(e.getPlayer(), true) && this.isItem(item) && !fluidName.equals("NO_LIQUID")
+                        && fluidAmount >= 1000) {
                     Material mat = Material.getMaterial(fluidName);
 
                     if (mat != null && e.getClickedBlock().isPresent()) {
                         Block block = e.getClickedBlock().get().getRelative(e.getClickedFace());
-                        if ((block.isLiquid() || block.getType().isAir()) && !block.getWorld().isUltraWarm() && Slimefun.getProtectionManager().hasPermission(e.getPlayer(), block.getLocation(), Interaction.PLACE_BLOCK)) {
+                        if ((block.isLiquid() || block.getType().isAir()) && !block.getWorld().isUltraWarm()
+                                && Slimefun.getProtectionManager().hasPermission(e.getPlayer(), block.getLocation(),
+                                        Interaction.PLACE_BLOCK)) {
                             ItemMeta meta = item.getItemMeta();
                             if (fluidAmount - 1000 == 0) {
                                 PersistentDataAPI.setString(meta, FLUID_NAME, "NO_LIQUID");
@@ -117,7 +125,6 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable, Listener {
                                 PersistentDataAPI.setString(meta, FLUID_NAME, fluidName);
                             }
                             PersistentDataAPI.setInt(meta, FLUID_AMOUNT, fluidAmount - 1000);
-                            
                             List<String> lore = new ArrayList<>();
                             lore.add(ChatColor.GRAY + "简单的液体掠夺者");
                             lore.add("");
@@ -157,7 +164,8 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable, Listener {
         int itemFluidAmount = PersistentDataAPI.getInt(im, FLUID_AMOUNT);
 
         int resultFluidAmount = itemFluidAmount + fluidAmount;
-        if (itemFluidName != null && itemFluidName.equals(fluidName) && itemFluidAmount != 0 && resultFluidAmount <= getMaxLiquidAmount()) {
+        if (itemFluidName != null && itemFluidName.equals(fluidName) && itemFluidAmount != 0
+                && resultFluidAmount <= getMaxLiquidAmount()) {
             setLiquid(item, fluidName, resultFluidAmount);
         } else if (resultFluidAmount >= getMaxLiquidAmount()) {
             setLiquid(item, fluidName, getMaxLiquidAmount());

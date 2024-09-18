@@ -6,12 +6,20 @@ import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import me.profelements.dynatech.items.backpacks.PicnicBasket;
 import me.profelements.dynatech.items.misc.DimensionalHomeDimension;
 import me.profelements.dynatech.items.tools.ElectricalStimulator;
+import me.profelements.dynatech.listeners.BlockBreakBlockListener;
+import me.profelements.dynatech.listeners.CoalCokeListener;
 import me.profelements.dynatech.listeners.ElectricalStimulatorListener;
 import me.profelements.dynatech.listeners.ExoticGardenIntegrationListener;
 import me.profelements.dynatech.listeners.GastronomiconIntegrationListener;
 import me.profelements.dynatech.listeners.InventoryFilterListener;
 import me.profelements.dynatech.listeners.PicnicBasketListener;
+import me.profelements.dynatech.listeners.RegistryListeners;
 import me.profelements.dynatech.listeners.UpgradesListener;
+import me.profelements.dynatech.registries.ItemGroups;
+import me.profelements.dynatech.registries.Items;
+import me.profelements.dynatech.registries.RecipeTypes;
+import me.profelements.dynatech.registries.Recipes;
+import me.profelements.dynatech.registries.Registries;
 import me.profelements.dynatech.setup.DynaTechItemsSetup;
 import me.profelements.dynatech.tasks.InventoryFilterTask;
 import me.profelements.dynatech.tasks.ItemBandTask;
@@ -70,15 +78,16 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
             worldCreator.generator(new DimensionalHomeDimension());
             worldCreator.createWorld();
         }
-        DynaTechRecipes.registerRecipes(DynaTech.getRecipeRegistry());
         DynaTechLiquids.registerLiquids(DynaTech.getLiquidRegistry());
 
         DynaTechItemsSetup.setup(this);
-        new PicnicBasketListener(this, (PicnicBasket) DynaTechItems.PICNIC_BASKET.getItem());
-        new ElectricalStimulatorListener(this, (ElectricalStimulator) DynaTechItems.ELECTRICAL_STIMULATOR.getItem());
+        new PicnicBasketListener(this, (PicnicBasket) Items.PICNIC_BASKET.stack().getItem());
+        new ElectricalStimulatorListener(this, (ElectricalStimulator) Items.ELECTRICAL_STIMULATOR.stack().getItem());
         new InventoryFilterListener(this);
         new UpgradesListener(this);
-
+        new CoalCokeListener(this);
+        new BlockBreakBlockListener(this);
+        new RegistryListeners(this);
         try {
             Class.forName("io.github.schntgaispock.gastronomicon.api.items.FoodItemStack");
             new GastronomiconIntegrationListener(this);
@@ -105,6 +114,19 @@ public class DynaTech extends JavaPlugin implements SlimefunAddon {
             getLogger().warning("DynaTech 仅支持 1.19+，请更新服务器版本后运行本插件。");
             getServer().getPluginManager().disablePlugin(this);
         }
+
+        setupRegistries();
+    }
+
+    private static void setupRegistries() {
+        ItemGroups.init(Registries.ITEM_GROUPS);
+        RecipeTypes.init(Registries.RECIPE_TYPES);
+        Recipes.init(Registries.RECIPES);
+        Registries.ITEMS.freeze();
+        Registries.ITEM_GROUPS.freeze();
+        Registries.RECIPE_TYPES.freeze();
+        Registries.RECIPES.freeze();
+
     }
 
     @Override
