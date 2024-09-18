@@ -1,8 +1,8 @@
 package me.profelements.dynatech.registries;
 
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
-import io.github.bakedlibs.dough.items.CustomItemStack;
 
 import me.profelements.dynatech.items.electric.MaterialHive;
 import org.bukkit.Material;
@@ -20,16 +20,16 @@ public class RecipeTypes {
     }
 
     public static final RecipeType SCOOPING = new RecipeType(Keys.SCOOPING.key(),
-            new CustomItemStack(Material.IRON_SHOVEL, "Use the Scoop to get this item."));
+            new CustomItemStack(Material.IRON_SHOVEL, "使用勺子获取该物品。"));
 
     public static final RecipeType OVENING = new RecipeType(Keys.OVENING.key(),
-            new CustomItemStack(Material.SMOKER, "Throw into the Coal Coke Oven multiblock"));
+            new CustomItemStack(Material.SMOKER, "丢入焦炭炉"));
 
     public static final RecipeType BLOCK_DROP = new RecipeType(Keys.BLOCK_DROP.key(),
-            new CustomItemStack(Material.COBWEB, "Drops from a block"));
+            new CustomItemStack(Material.COBWEB, "从方块掉落"));
 
     public static final RecipeType TREE_GROWTH_CHAMBER = new RecipeType(Keys.TREE_GROWTH_CHAMBER.key(),
-            new CustomItemStack(Material.LIME_CONCRETE, "Throw into the Tree Growth Chamber machine"));
+            new CustomItemStack(Material.LIME_CONCRETE, "放入树木生长加速器"));
 
     public static final RecipeType MATERIAL_HIVE = new RecipeType(Keys.MATERIAL_HIVE.key(),
             Items.MATERIAL_HIVE.stack(),

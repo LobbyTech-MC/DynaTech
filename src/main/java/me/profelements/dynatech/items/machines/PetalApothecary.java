@@ -7,13 +7,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.blocks.BlockPosition;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.Levelled;
 import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.bakedlibs.dough.blocks.BlockPosition;
 import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -32,7 +33,7 @@ public class PetalApothecary extends SlimefunItem {
     protected static final HashMap<BlockPosition, List<ItemStack>> RECIPE_ITEMS = new HashMap<>();
 
     public PetalApothecary(ItemGroup itemGroup, SlimefunItemStack item) {
-        super(itemGroup, item);
+        super(itemGroup, item, RecipeType.NULL, new ItemStack[9]);
 
         addItemHandler(onUse(), new BlockTicker() {
 

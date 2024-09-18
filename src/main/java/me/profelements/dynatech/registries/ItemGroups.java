@@ -1,8 +1,8 @@
 package me.profelements.dynatech.registries;
 
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import org.bukkit.Material;
 
-import io.github.bakedlibs.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.groups.NestedItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.groups.SubItemGroup;
@@ -21,26 +21,26 @@ public class ItemGroups {
 
     public static final NestedItemGroup GENERAL = new NestedItemGroup(
             Keys.GENERAL.key(),
-            new CustomItemStack(Material.CONDUIT, "&bDynaTech"));
+            new CustomItemStack(Material.CONDUIT, "&b动力科技"));
 
     public static final SubItemGroup RESOURCES = new SubItemGroup(
             Keys.RESOURCES.key(), GENERAL,
-            new CustomItemStack(Material.PUFFERFISH, "&bDynaTech Resources"));
+            new CustomItemStack(Material.PUFFERFISH, "&b动力科技 - 资源"));
 
     public static final SubItemGroup TOOLS = new SubItemGroup(Keys.TOOLS.key(),
-            GENERAL, new CustomItemStack(Material.DIAMOND_AXE, "&bDynaTech Tools"));
+            GENERAL, new CustomItemStack(Material.DIAMOND_AXE, "&b动力科技 - 工具"));
 
     public static final SubItemGroup MACHINES = new SubItemGroup(Keys.MACHINES.key(), GENERAL,
-            new CustomItemStack(Material.SEA_LANTERN, "&bDynaTech Machines"));
+            new CustomItemStack(Material.SEA_LANTERN, "&b动力科技 - 机器"));
 
     public static final SubItemGroup GENERATORS = new SubItemGroup(Keys.GENERATORS.key(), GENERAL,
-            new CustomItemStack(Material.PRISMARINE_BRICKS, "&bDynaTech Generators"));
+            new CustomItemStack(Material.PRISMARINE_BRICKS, "&b动力科技 - 发电机"));
 
     public static final SubItemGroup EXPERIMENTAL = new SubItemGroup(Keys.EXPERIMENTAL.key(), GENERAL,
-            new CustomItemStack(Material.REDSTONE_LAMP, "&fDynaTech Experimental"));
+            new CustomItemStack(Material.REDSTONE_LAMP, "&f动力科技 - 实验性物品"));
 
     public static final SubItemGroup HIVES = new SubItemGroup(Keys.APIARIES.key(),
-            GENERAL, new CustomItemStack(Material.BEEHIVE, "&bDynaTech Apiaries"));
+            GENERAL, new CustomItemStack(Material.BEEHIVE, "&b动力科技 - 蜂巢"));
 
     public static final class Keys {
         public static final TypedKey<ItemGroup> GENERAL = TypedKey.create("dynatech", "general");

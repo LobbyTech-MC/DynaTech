@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
+import io.github.thebusybiscuit.slimefun4.libraries.dough.blocks.BlockPosition;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Pair;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.ItemUtils;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -18,9 +21,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
-import io.github.bakedlibs.dough.blocks.BlockPosition;
-import io.github.bakedlibs.dough.collections.Pair;
-import io.github.bakedlibs.dough.items.ItemUtils;
 import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
@@ -81,11 +81,11 @@ public class CokeOvenController extends SlimefunItem {
                     BlockStorage.addBlockInfo(event.getClickedBlock().get(), "dynatech:facing",
                             event.getPlayer().getFacing().toString());
 
-                    event.getPlayer().sendMessage("Coke Oven multiblock is valid.");
+                    event.getPlayer().sendMessage("焦炭多方块结构有效。");
                 } else {
 
                     BlockStorage.addBlockInfo(event.getClickedBlock().get(), "dynatech:valid", String.valueOf(false));
-                    event.getPlayer().sendMessage("Coke Oven multiblock is not valid.");
+                    event.getPlayer().sendMessage("焦炭多方块结构无效。");
                 }
 
                 DynaTech.runSync(() -> {

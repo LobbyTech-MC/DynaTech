@@ -473,7 +473,7 @@ public class DynaTechItemsSetup {
         // START Mechanical Components
 
         // final Recipe woodMachineCoreRecipe = Recipes.WOOD_MACHINE_CORE;
-        new SlimefunItem(ItemGroups.EXPERIMENTAL, Items.WOOD_MACHINE_CORE.stack()).register(plugin);
+        new SlimefunItem(ItemGroups.EXPERIMENTAL, Items.WOOD_MACHINE_CORE.stack(), RecipeType.NULL, new ItemStack[9]).register(plugin);
         // new UnplaceableBlock(ItemGroups.EXPERIMENTAL,
         // Items.WOOD_MACHINE_CORE.stack()).register(plugin);
 

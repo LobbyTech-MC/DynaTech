@@ -1,21 +1,19 @@
 package me.profelements.dynatech.registries;
 
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerHead;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerSkin;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.items.misc.StarDustMeteor;
-import me.profelements.dynatech.registries.Items.Keys;
 import me.profelements.dynatech.utils.Recipe;
 import me.profelements.dynatech.utils.TimedRecipe;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
-import io.github.bakedlibs.dough.items.CustomItemStack;
-import io.github.bakedlibs.dough.skins.PlayerHead;
-import io.github.bakedlibs.dough.skins.PlayerSkin;
 
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Tag;
-import org.bukkit.enchantments.Enchantment;
 
 public class Recipes {
     // START common use items
@@ -30,7 +28,7 @@ public class Recipes {
     private static final ItemStack DIAMOND_BLOCK = new ItemStack(Material.DIAMOND_BLOCK);
     private static final ItemStack CRYING_OBSIDIAN = new ItemStack(Material.CRYING_OBSIDIAN);
     private static final ItemStack UNBREAKING_3_ENCHANTED_BOOK = new CustomItemStack(Material.ENCHANTED_BOOK, meta -> {
-        meta.addEnchant(Enchantment.UNBREAKING, 3, false);
+        meta.addEnchant(org.bukkit.Registry.ENCHANTMENT.get(NamespacedKey.minecraft("unbreaking")), 3, false);
     });
 
     private static final ItemStack GLASS = new ItemStack(Material.GLASS);
