@@ -59,7 +59,7 @@ public class WirelessItemOutput extends SlimefunItem implements EnergyNetCompone
 
         addItemHandler(onBlockBreak(), onBlockPlace(), onRightClick());
 
-        new BlockMenuPreset("WIRELESS_ITEM_OUTPUT", "&6无线物品输出节点") {
+        new BlockMenuPreset(Items.Keys.WIRELESS_ITEM_OUTPUT.asSlimefunId(), "&6无线物品输出节点") {
             @Override
             public void init() {
                 constructMenu(this);
