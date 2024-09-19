@@ -273,12 +273,12 @@ public class Tesseract extends SlimefunItem implements EnergyNetProvider {
         ItemMeta im = item.getItemMeta();
         List<String> lore = im.getLore();
         for (int i = 0; i < lore.size(); i++) {
-            if (lore.get(i).contains("绑定位置: ")) {
+            if (lore.get(i).contains("绑定位置：")) {
                 lore.remove(i);
             }
         }
 
-        lore.add(ChatColor.WHITE + "绑定位置: " + l.getWorld().getName() + " " + l.getBlockX() + " " + l.getBlockY()
+        lore.add(ChatColor.WHITE + "绑定位置：" + l.getWorld().getName() + " " + l.getBlockX() + " " + l.getBlockY()
                 + " " + l.getBlockZ());
 
         im.setLore(lore);

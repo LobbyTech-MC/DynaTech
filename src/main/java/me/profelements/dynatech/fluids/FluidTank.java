@@ -3,6 +3,7 @@ package me.profelements.dynatech.fluids;
 import java.util.ArrayList;
 
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
+import net.guizhanss.minecraft.dynatech.utils.FluidUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -102,8 +103,8 @@ public class FluidTank extends SlimefunItem implements Listener {
         }
 
         ArrayList<String> lore = new ArrayList<>();
-        lore.add(ChatColor.WHITE + "Fluid Held: " + handFluid.fluid().toString());
-        lore.add(ChatColor.WHITE + "Fluid Amount: " + String.valueOf(handFluid.amount()));
+        lore.add(ChatColor.WHITE + "当前液体：" + FluidUtils.getFluidType(handFluid.fluid()));
+        lore.add(ChatColor.WHITE + "存量：" + handFluid.amount());
         handMeta.setLore(lore);
         handItem.setItemMeta(handMeta);
 
@@ -141,8 +142,8 @@ public class FluidTank extends SlimefunItem implements Listener {
         } else {
 
             ArrayList<String> lore = new ArrayList<>();
-            lore.add(ChatColor.WHITE + "Fluid Held: " + handFluid.fluid().toString());
-            lore.add(ChatColor.WHITE + "Fluid Amount: " + String.valueOf(handFluid.amount()));
+            lore.add(ChatColor.WHITE + "当前液体：" + FluidUtils.getFluidType(handFluid.fluid()));
+            lore.add(ChatColor.WHITE + "存量：" + handFluid.amount());
             handMeta.setLore(lore);
         }
 

@@ -304,7 +304,7 @@ public class Items {
                     "",
                     "&f&o像小鸟一样飞行~",
                     "",
-                    "&7飞行：<启用>",
+                    "&7飞行：<状态>",
                     "&7飞行速度：<速度>"));
 
     public static final ItemWrapper RECIPE_BOOK = ItemWrapper.create(Keys.RECIPE_BOOK,
