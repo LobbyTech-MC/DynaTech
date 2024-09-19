@@ -10,6 +10,7 @@ import me.profelements.dynatech.utils.TimedRecipe;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 
+import net.guizhanss.guizhanlib.minecraft.utils.compatibility.EnchantmentX;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -28,7 +29,7 @@ public class Recipes {
     private static final ItemStack DIAMOND_BLOCK = new ItemStack(Material.DIAMOND_BLOCK);
     private static final ItemStack CRYING_OBSIDIAN = new ItemStack(Material.CRYING_OBSIDIAN);
     private static final ItemStack UNBREAKING_3_ENCHANTED_BOOK = new CustomItemStack(Material.ENCHANTED_BOOK, meta -> {
-        meta.addEnchant(org.bukkit.Registry.ENCHANTMENT.get(NamespacedKey.minecraft("unbreaking")), 3, false);
+        meta.addEnchant(EnchantmentX.UNBREAKING, 3, false);
     });
 
     private static final ItemStack GLASS = new ItemStack(Material.GLASS);

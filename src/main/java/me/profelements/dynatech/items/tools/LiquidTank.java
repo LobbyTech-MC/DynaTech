@@ -14,6 +14,7 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.registries.Items;
+import net.guizhanss.guizhanlib.minecraft.utils.compatibility.EntityTypeX;
 import net.guizhanss.minecraft.dynatech.utils.FluidUtils;
 
 import org.bukkit.Bukkit;
@@ -54,7 +55,7 @@ public class LiquidTank extends SlimefunItem implements NotPlaceable, Listener {
     private final EntityInteractHandler onEntityClick() {
         return (e, item, something) -> {
             if ((e.getRightClicked().getType() == EntityType.COW
-                    || e.getRightClicked().getType() == EntityType.MOOSHROOM)
+                    || e.getRightClicked().getType() == EntityTypeX.MOOSHROOM)
                     && SlimefunUtils.isItemSimilar(item, Items.LIQUID_TANK.stack(), true)) {
                 e.setCancelled(true);
             }

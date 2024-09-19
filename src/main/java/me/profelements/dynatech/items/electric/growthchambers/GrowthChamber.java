@@ -17,7 +17,7 @@ import me.profelements.dynatech.items.abstracts.AbstractElectricMachine;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.guizhanss.minecraft.dynatech.utils.compatibility.VersionedMaterial;
+import net.guizhanss.guizhanlib.minecraft.utils.compatibility.MaterialX;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -59,7 +59,7 @@ public class GrowthChamber extends AbstractElectricMachine {
         registerRecipe(9, new ItemStack(Material.BROWN_MUSHROOM), new ItemStack(Material.BROWN_MUSHROOM, 3));
         registerRecipe(9, new ItemStack(Material.RED_MUSHROOM), new ItemStack(Material.RED_MUSHROOM, 3));
         registerRecipe(9, new ItemStack[] {new ItemStack(Material.DEAD_BUSH)}, new ItemStack[] {new ItemStack(Material.DEAD_BUSH , 3), new ItemStack(Material.STICK, 2)});
-        registerRecipe(9, new ItemStack(VersionedMaterial.GRASS.get()), new ItemStack(VersionedMaterial.GRASS.get(), 3));
+        registerRecipe(9, new ItemStack(MaterialX.SHORT_GRASS), new ItemStack(MaterialX.SHORT_GRASS, 3));
         registerRecipe(12, new ItemStack(Material.TALL_GRASS), new ItemStack(Material.TALL_GRASS, 3));
         registerRecipe(9, new ItemStack(Material.FERN), new ItemStack(Material.FERN, 3));
         registerRecipe(12, new ItemStack(Material.LARGE_FERN), new ItemStack(Material.LARGE_FERN, 3));
