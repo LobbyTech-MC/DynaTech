@@ -19,6 +19,8 @@ import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.mrCookieSlime.Slimefun.api.inventory.DirtyChestMenu;
 import me.mrCookieSlime.Slimefun.api.item_transport.ItemTransportFlow;
+import me.profelements.dynatech.registries.Items;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -34,14 +36,15 @@ public class WirelessItemInput extends SlimefunItem implements EnergyNetComponen
 
     private final int capacity;
 
-    public WirelessItemInput(ItemGroup itemGroup, int capacity, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public WirelessItemInput(ItemGroup itemGroup, int capacity, SlimefunItemStack item, RecipeType recipeType,
+            ItemStack[] recipe) {
         super(itemGroup, item, recipeType, recipe);
 
         this.capacity = capacity;
 
         addItemHandler(onBlockBreak());
 
-        new BlockMenuPreset("WIRELESS_ITEM_INPUT", "&6无线物品输入节点") {
+        new BlockMenuPreset(Items.Keys.WIRELESS_ITEM_INPUT.asSlimefunId(), "&6无线物品输入节点") {
 
             @Override
             public void init() {
@@ -50,8 +53,8 @@ public class WirelessItemInput extends SlimefunItem implements EnergyNetComponen
 
             @Override
             public boolean canOpen(Block b, Player p) {
-                return p.hasPermission("slimefun.inventory.bypass") || Slimefun.getProtectionManager().hasPermission(p, b.getLocation(), Interaction.INTERACT_BLOCK);
-
+                return p.hasPermission("slimefun.inventory.bypass") || Slimefun.getProtectionManager().hasPermission(p,
+                        b.getLocation(), Interaction.INTERACT_BLOCK);
 
             }
 
@@ -94,16 +97,15 @@ public class WirelessItemInput extends SlimefunItem implements EnergyNetComponen
             @Override
             public void onPlayerBreak(BlockBreakEvent event, ItemStack block, List<ItemStack> drops) {
                 BlockMenu inv = StorageCacheUtils.getMenu(event.getBlock().getLocation());
-
                 if (inv != null) {
                     inv.dropItems(event.getBlock().getLocation(), getInputSlots());
                     inv.dropItems(event.getBlock().getLocation(), getOutputSlots());
+
                 }
 
 
                 Slimefun.getDatabaseManager().getBlockDataController().removeBlock(event.getBlock().getLocation());
             }
-
         };
     }
 
@@ -126,15 +128,15 @@ public class WirelessItemInput extends SlimefunItem implements EnergyNetComponen
         knowledgePane.setItemMeta(im);
     }
 
-    //Boilerplate for machines.
+    // Boilerplate for machines.
     public void constructMenu(BlockMenuPreset preset) {
         preset.drawBackground(ChestMenuUtils.getInputSlotTexture(), getBorder());
-        preset.addItem(4, new CustomItemStack(Material.PURPLE_STAINED_GLASS_PANE, "&b当前状态"), ChestMenuUtils.getEmptyClickHandler());
+        preset.addItem(4, new CustomItemStack(Material.PURPLE_STAINED_GLASS_PANE, "&b当前状态"),
+                ChestMenuUtils.getEmptyClickHandler());
     }
 
-
     public int[] getBorder() {
-        return new int[]{0, 1, 2, 3, 5, 6, 7, 8, 45, 46, 47, 48, 49, 50, 51, 52, 53};
+        return new int[]{ 0, 1, 2, 3, 5, 6, 7, 8, 45, 46, 47, 48, 49, 50, 51, 52, 53 };
     }
 
     public int[] getInputSlots() {
@@ -156,9 +158,3 @@ public class WirelessItemInput extends SlimefunItem implements EnergyNetComponen
     }
 
 }
-
-    
-
-    
-       
-        

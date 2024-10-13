@@ -1,10 +1,8 @@
 package me.profelements.dynatech.listeners;
 
-import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;
-import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import me.profelements.dynatech.DynaTech;
-import me.profelements.dynatech.DynaTechItems;
-import org.bukkit.Material;
+import me.profelements.dynatech.tasks.InventoryFilterTask;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,48 +11,40 @@ import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class InventoryFilterListener implements Listener {
-    
+
     public InventoryFilterListener(@Nonnull DynaTech plugin) {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
     @EventHandler
-    public void onItemPickup(EntityPickupItemEvent e) {
+    private void onPlayerAttemptPickup(EntityPickupItemEvent e) {
         if (e.getEntity() instanceof Player p) {
-            filterInv(p, e);
+            filterInventory(p, e);
         }
     }
 
-    private void filterInv(@Nonnull Player p, @Nonnull EntityPickupItemEvent e) {
-        List<ItemStack> itemBlackList = new ArrayList<>();
-//        for (ItemStack item : p.getInventory().getContents()) {
-//            if (SlimefunUtils.isItemSimilar(item,  DynaTechItems.INVENTORY_FILTER, true, false)) {
-//                PlayerProfile.getBackpack(item, backpack -> {
-//
-//                        for (ItemStack bpItem : backpack.getInventory().getContents()) {
-//                            if (bpItem != null && bpItem.getType() != Material.AIR) {
-//                                itemBlackList.add(item);
-//                            }
-//                        }
-//
-//                });
-//                break;
-//            }
-//        }
+    private void filterInventory(Player p, EntityPickupItemEvent event) {
+        Item itemEntity = event.getItem();
+        ItemStack itemEntityStack = itemEntity.getItemStack();
+        Set<ItemStack> otherItems = InventoryFilterTask.OTHER_ITEMS.computeIfAbsent(p.getUniqueId(), k -> new HashSet<>());
+        Set<String> sfItems = InventoryFilterTask.SF_ITEMS.computeIfAbsent(p.getUniqueId(), k -> new HashSet<>());
 
-        //Clear and add back drops if not filtered by Inventory filtered
-        for (ItemStack item : itemBlackList) {
-            if (SlimefunUtils.isItemSimilar(item, e.getItem().getItemStack(), true, false)) {
-                Item itemEnt = e.getItem();
-                itemEnt.remove();
+        for (ItemStack checkStack : otherItems) {
+            if (checkStack != null && checkStack.isSimilar(itemEntityStack)) {
+                itemEntity.remove();
+                event.setCancelled(true);
                 break;
             }
-
         }
-        itemBlackList.clear();
+
+        SlimefunItem item = SlimefunItem.getByItem(itemEntityStack);
+        if (item != null && sfItems.contains(item.getId())) {
+            itemEntity.remove();
+            event.setCancelled(true);
+        }
     }
 }

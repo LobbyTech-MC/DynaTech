@@ -10,7 +10,8 @@ import io.github.thebusybiscuit.slimefun4.core.handlers.ItemDropHandler;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import me.profelements.dynatech.DynaTech;
-import me.profelements.dynatech.DynaTechItems;
+import me.profelements.dynatech.registries.Items;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -48,7 +49,8 @@ public class AngelGem extends SlimefunItem implements NotPlaceable, Listener {
     private ItemDropHandler onItemDrop() {
         return (e, p, itemEntity) -> {
             ItemStack item = itemEntity.getItemStack();
-            if (e.getPlayer().getGameMode() != GameMode.CREATIVE && item.getType() == DynaTechItems.ANGEL_GEM.getType() && SlimefunUtils.isItemSimilar(item, DynaTechItems.ANGEL_GEM, false, false)) {
+            if (e.getPlayer().getGameMode() != GameMode.CREATIVE && item.getType() == Items.ANGEL_GEM.stack().getType()
+                    && SlimefunUtils.isItemSimilar(item, Items.ANGEL_GEM.stack(), false, false)) {
                 e.getPlayer().setFlying(false);
                 e.getPlayer().setAllowFlight(false);
                 e.getPlayer().setFlySpeed(0.1f);
@@ -110,7 +112,6 @@ public class AngelGem extends SlimefunItem implements NotPlaceable, Listener {
         }
     }
 
-
     protected ItemMeta updateLore(ItemStack item, Player p) {
         ItemMeta im = item.getItemMeta();
 
@@ -121,18 +122,17 @@ public class AngelGem extends SlimefunItem implements NotPlaceable, Listener {
         List<String> lore = im.getLore();
 
         for (int line = 0; line < lore.size(); line++) {
-            if (lore.get(line).contains("飞行: <enabled>")) {
-                lore.set(line, lore.get(line).replace("<enabled>", p.getAllowFlight() ? "开启" : "关闭"));
+            if (lore.get(line).contains("飞行：")) {
+                lore.set(line, ChatColor.GRAY + "飞行：" + (p.getAllowFlight() ? "开启" : "关闭"));
             }
-            if (lore.get(line).contains(ChatColor.GRAY + "飞行速度: ")) {
-                lore.set(line, lore.get(line).replaceFirst(".*", ChatColor.GRAY + "飞行速度: " + getFlySpeed()));
+            if (lore.get(line).contains("飞行速度：")) {
+                lore.set(line, ChatColor.GRAY + "飞行速度：" + getFlySpeed());
             }
         }
 
         im.setLore(lore);
         return im;
     }
-
 
     public float getFlySpeed() {
         return flySpeed;

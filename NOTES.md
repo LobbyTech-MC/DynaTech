@@ -32,6 +32,20 @@
 - **wip** : Work in Progress stuff to eventually become a feature or bugfix //GitMoji emoji : :construction:
 - **work** : general working on weather its cleaninp up or otherwise //GitMoji emoji : :construction:
 
+## ROUND 1
+- Add Wind Mill [x]
+- Add Wind Turbine [x]
+- Fix Water Mill [x]
+- Fix Hydro Turbine [x]
+- Fix Dragon Egg Generator [x]
+- Add Dragon Egg Turbine [x]
+### ROUND 2 
+- Add Recipe Book [x]
+- Add Liquid Storage [ ]
+- Add Liquid Storage Tank (Liquid Storage Block) [ ]
+- Add Liquid Storage Capsule (Liquid Storage Item) [ ]
+### ROUND OTHER
+- Add Fishing Machine [ ]
 ## MISC Notes
 To register a recipe without a SlimefunItem + SlimefunItemStack combo 
 use RecipeType.register(ItemStack[], ItemStack) 

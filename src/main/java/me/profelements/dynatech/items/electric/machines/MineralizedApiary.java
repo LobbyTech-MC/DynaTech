@@ -22,6 +22,7 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecip
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.profelements.dynatech.items.abstracts.AbstractElectricMachine;
+import net.guizhanss.guizhanlib.minecraft.utils.ChatUtil;
 
 public class MineralizedApiary extends AbstractElectricMachine {
 
@@ -153,8 +154,8 @@ public class MineralizedApiary extends AbstractElectricMachine {
         ItemStack item = PROGRESS_STACK.clone();
         ItemMeta meta = item.getItemMeta();
 
-        meta.setDisplayName("&f信息");
-        meta.setLore(Arrays.asList("&f蜜蜂数量：" + beeCount, "&f生产速率：" + currSpeed + "秒"));
+        meta.setDisplayName(ChatUtil.color("&f信息"));
+        meta.setLore(ChatUtil.color(List.of("&f蜜蜂数量：" + beeCount, "&f生产速率：" + currSpeed + "秒")));
         item.setItemMeta(meta);
 
         menu.replaceExistingItem(20, item);

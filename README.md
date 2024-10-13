@@ -6,18 +6,7 @@
 
 ## 下载
 
-点击这里下载 DynaTech: [下载 DynaTech](https://builds.guizhanss.net/ybw0014/DynaTech-CN/master)
-
-<p align="center">
-  <a href="https://github.com/ybw0014/DynaTech-CN/actions/workflows/maven.yml">
-    <img src="https://github.com/ybw0014/DynaTech-CN/actions/workflows/maven.yml/badge.svg" alt="Java CI"/>
-
-  </a>
-
-  <a href="https://builds.guizhanss.net/ybw0014/DynaTech-CN/master">
-    <img src="https://builds.guizhanss.net/f/ybw0014/DynaTech-CN/master/badge.svg" alt="Build status"/>
-  </a>
-</p>
+[![构建状态](https://builds.guizhanss.com/api/badge/SlimefunGuguProject/DynaTech/master/latest)](https://builds.guizhanss.com/SlimefunGuguProject/DynaTech)
 
 ## 机器
 
