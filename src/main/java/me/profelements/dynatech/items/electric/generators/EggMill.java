@@ -84,7 +84,10 @@ public class EggMill extends SlimefunItem implements EnergyNetProvider {
     @Override
     public int getGeneratedOutput(Location l, Config cfg) {
         int energy = 0;
-        int currDurability = Integer
+        if (BlockStorage.getLocationInfo(l, DURABILITY_STRING) == null) {
+        	return energy;
+        }
+		int currDurability = Integer
                 .parseInt(BlockStorage.getLocationInfo(l, DURABILITY_STRING));
 
         if (currDurability > 0) {

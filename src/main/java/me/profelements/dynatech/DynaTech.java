@@ -1,5 +1,18 @@
 package me.profelements.dynatech;
 
+import java.util.logging.Level;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import org.bstats.bukkit.Metrics;
+import org.bukkit.Bukkit;
+import org.bukkit.WorldCreator;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitTask;
+
+import com.google.common.base.Preconditions;
+
 import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
@@ -23,23 +36,9 @@ import me.profelements.dynatech.registries.Registries;
 import me.profelements.dynatech.setup.DynaTechItemsSetup;
 import me.profelements.dynatech.tasks.InventoryFilterTask;
 import me.profelements.dynatech.tasks.ItemBandTask;
-import me.profelements.dynatech.utils.Liquid;
 import me.profelements.dynatech.utils.LiquidRegistry;
 import me.profelements.dynatech.utils.RecipeRegistry;
-
 import net.guizhanss.guizhanlibplugin.updater.GuizhanUpdater;
-import org.bstats.bukkit.Metrics;
-import org.bukkit.Bukkit;
-import org.bukkit.WorldCreator;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitTask;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import com.google.common.base.Preconditions;
-
-import java.util.logging.Level;
 
 public class DynaTech extends JavaPlugin implements SlimefunAddon {
 
