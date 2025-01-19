@@ -17,6 +17,8 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction
 import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
 import me.profelements.dynatech.DynaTech;
 import me.profelements.dynatech.registries.Items;
+import me.profelements.dynatech.utils.EnergyUtils;
+import net.kyori.adventure.text.Component;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
@@ -71,18 +73,16 @@ public class WirelessEnergyPoint extends SlimefunItem implements EnergyNetProvid
             var bank = StorageCacheUtils.getSfItem(wirelessEnergyBank);
             if (bank != null && bank.getId()
                     .equals(Items.WIRELESS_ENERGY_BANK.stack().getItemId())) {
-                int bankCharge = getCharge(wirelessEnergyBank);
 
-                if (bankCharge > chargedNeeded) {
-                    if (chargedNeeded > getEnergyRate()) {
-                        removeCharge(wirelessEnergyBank, getEnergyRate());
-                        return getEnergyRate();
-                    }
-                    removeCharge(wirelessEnergyBank, chargedNeeded);
-                    return chargedNeeded;
+                String energyCharge = BlockStorage.getLocationInfo(l, "energy-charge");
+                if (energyCharge == null) {
+                    BlockStorage.addBlockInfo(l, "energy-charge", String.valueOf(0));
                 }
-            }
 
+                EnergyUtils.moveEnergyFromTo(new BlockPosition(wirelessEnergyBank), new BlockPosition(l),
+                        getEnergyRate(), getCapacity());
+            }
+            return 0;
         }
         return 0;
     }
@@ -148,17 +148,18 @@ public class WirelessEnergyPoint extends SlimefunItem implements EnergyNetProvid
 
     private void setItemLore(ItemStack item, Location l) {
         ItemMeta im = item.getItemMeta();
-        List<String> lore = im.getLore();
+        List<Component> lore = im.lore();
         for (int i = 0; i < lore.size(); i++) {
-            if (lore.get(i).contains("绑定位置: ")) {
+            if (lore.get(i).contains(Component.text("绑定位置: "))) {
                 lore.remove(i);
             }
         }
 
-        lore.add(ChatColor.WHITE + "绑定位置: " + l.getWorld().getName() + " " + l.getBlockX() + " " + l.getBlockY()
-                + " " + l.getBlockZ());
+        lore.add(Component.text(
+                ChatColor.WHITE + "绑定位置: " + l.getWorld().getName() + " " + l.getBlockX() + " " + l.getBlockY()
+                        + " " + l.getBlockZ()));
 
-        im.setLore(lore);
+        im.lore(lore);
         item.setItemMeta(im);
 
     }
