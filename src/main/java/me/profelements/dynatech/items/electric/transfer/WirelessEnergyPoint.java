@@ -12,6 +12,7 @@ import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetProvider;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockPlaceHandler;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.blocks.BlockPosition;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
 import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
@@ -74,9 +75,9 @@ public class WirelessEnergyPoint extends SlimefunItem implements EnergyNetProvid
             if (bank != null && bank.getId()
                     .equals(Items.WIRELESS_ENERGY_BANK.stack().getItemId())) {
 
-                String energyCharge = BlockStorage.getLocationInfo(l, "energy-charge");
+                String energyCharge = StorageCacheUtils.getData(l, "energy-charge");
                 if (energyCharge == null) {
-                    BlockStorage.addBlockInfo(l, "energy-charge", String.valueOf(0));
+                    StorageCacheUtils.setData(l, "energy-charge", String.valueOf(0));
                 }
 
                 EnergyUtils.moveEnergyFromTo(new BlockPosition(wirelessEnergyBank), new BlockPosition(l),

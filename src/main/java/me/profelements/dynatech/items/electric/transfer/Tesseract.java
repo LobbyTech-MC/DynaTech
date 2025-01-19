@@ -9,6 +9,7 @@ import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetProvider;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.blocks.BlockPosition;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
 import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
@@ -141,10 +142,7 @@ public class Tesseract extends SlimefunItem implements EnergyNetProvider {
         var tesseractBlock = StorageCacheUtils.getBlock(tesseractPair);
         if (tesseractBlock != null
                 && tesseractBlock.getSfId().equals(Items.TESSERACT.stack().getItemId())) {
-            BlockMenu input = tesseractBlock.getBlockMenu();
-            BlockMenu output = StorageCacheUtils.getMenu(b.getLocation());
-
-            BlockMenu toMenu = BlockStorage.getInventory(b.getLocation());
+            BlockMenu toMenu = StorageCacheUtils.getMenu(b.getLocation());
 
             updateKnowledgePane(toMenu, getCharge(b.getLocation()));
             EnergyUtils.moveInventoryFromTo(new BlockPosition(tesseractPair), new BlockPosition(b), getInputSlots(),

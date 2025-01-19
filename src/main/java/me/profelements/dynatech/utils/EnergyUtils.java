@@ -6,11 +6,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import io.github.thebusybiscuit.slimefun4.libraries.dough.blocks.BlockPosition;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.bakedlibs.dough.blocks.BlockPosition;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 
@@ -20,7 +20,7 @@ public class EnergyUtils {
     }
 
     public static final int moveEnergyFromTo(BlockPosition from, BlockPosition to, int fromEnergyRate,
-            int toEnergyMax) {
+                                             int toEnergyMax) {
         Location fromLocation = from.toLocation();
         Location toLocation = to.toLocation();
         String energyKey = "energy-charge";
